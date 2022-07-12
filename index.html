@@ -21,13 +21,13 @@ title: Home
 
 <div class="pagination">
   {% if paginator.next_page %}
-    <a class="pagination-item older" href="{{ paginator.next_page_path | relative_url }}">👇</a>
+    <a class="pagination-item older" href="/archive">archive</a>
   {% else %}
-    <span class="pagination-item older">👇</span>
+    <span class="pagination-item older" href="/archive">archive</span>
   {% endif %}
-  {% if paginator.previous_page %}
+  <!-- {% if paginator.previous_page %}
     <a class="pagination-item newer" href="{{ paginator.previous_page_path | prepend: relative_url }}">👆</a>
   {% else %}
     <span class="pagination-item newer">👆</span>
-  {% endif %}
+  {% endif %} -->
 </div>
