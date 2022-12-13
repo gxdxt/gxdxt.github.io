@@ -60,8 +60,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --body-color: var(--body-color);
-    --body-bg: var(--body-bg);
+    --body-color: #f6f1eb;
+    --body-bg: #92908d;
 
     --heading-color: rgb(5, 6, 22);
 
@@ -76,8 +76,8 @@
 
 // Dark Poole theme
 [data-theme="dark-poole"] {
-  --body-color: var(--body-color);
-  --body-bg: var(--body-bg);
+  --body-color: #f6f1eb;
+  --body-bg: #92908d; 
   --heading-color: var(--dark-poole-002);
   --link-color: var(--dark-poole-link-color);
   --link-hover-color: var(--dark-poole-link-hover);
