@@ -1,28 +1,66 @@
 ---
 layout: page
-title: About
+title:
+permalink: /about/
+comment: false
+latex: true
 ---
+* TOC
+{:toc}
 
-<p class="message">
-  안녕하세요!
-</p>
+<div class="contact">
+{% if site.github_username %}
+        <a href="https://github.com/{{ site.github_username }}">GitHub</a>
+{% endif %}
+{% if site.twitter_username %}
+        <a href="https://twitter.com/{{ site.twitter_username }}">Twitter</a>
+{% endif %}
+{% if site.email %}
+        <a href="mailto:{{ site.email }}">Email</a>
+{% endif %}
+        <a href="{{ "/feed.xml" | prepend: site.baseurl }}">RSS</a>
+</div>
 
-In the novel, *En attendant Godot*, 
+## Motto
+
+> Whenever you fall, pick something up. – Oswald Avery
+>
+> 넘어지면 무언가를 주워라. - 오스왈드 에이버리
 
 
-- [Twitter](https://twitter.com/gxdxt)
-- [Github](https://github.com/gxdxt)
+## About Me
 
-#Learn more and contribute on [GitHub](https://github.com/poole).
+* 
+* 
+* 모르는 것이 많아 매일 공부합니다.
+* 
+* iOS 개발자입니다.
 
-## Setup
+## Life
 
-<!-- Some fun facts about the setup of this project include:
+* 
+* 
+* 
+* 
+* 항상 규칙적으로 생활하려 노력합니다.
+    * 잠은 매일 23시 ~ 24시에 잡니다.
+    * 늦어도 8시에는 일어납니다.
+    * 주말도 예외가 아닙니다.
+* Vim 사용자입니다.
 
-- Built for [Jekyll](https://jekyllrb.com)
-- Developed on GitHub and hosted for free on [GitHub Pages](https://pages.github.com)
-- Coded with [Atom](https://atom.io), an amazing open source code editor
+## 기고
 
-Have questions or suggestions? Feel free to [open an issue on GitHub](https://github.com/poole/poole/issues/new) or [ask me on Twitter](https://twitter.com/mdo). -->
 
-Thanks for reading!
+## 인터뷰, 발표
+
+
+## Job Experience
+
+- (주)코비젼 - _2021-04-12 ~ 2022-03-28_
+    - CS 개발자
+    	- .NET기반 솔루션
+	- MSSQL 모니터링
+
+## Public Key
+
+

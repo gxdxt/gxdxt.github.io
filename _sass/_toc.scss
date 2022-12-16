@@ -1,16 +1,33 @@
-// Table of Contents
+@media (min-width: 1700px) {
+    ul#markdown-toc {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: calc(50vw + 410px);
+        width: 380px;
+        background-color: white;
+        z-index: 1;
+        font-size: 0.8em;
+        overflow-y:auto;
+        overflow-x:hidden;
+        border: 0px solid;
+        line-height: 1.5;
+    }
+}
 
 #markdown-toc {
-  padding: var(--spacer-2) var(--spacer-3);
-  margin-bottom: var(--spacer-2);
-  border: solid var(--border-color);
-  border-width: 1px 0;
-
-  &::before {
-    display: block;
-    margin-left: calc(var(--spacer-3) * -1);
-    content: "Contents";
-    font-size: 85%;
-    font-weight: 500;
-  }
+    border: 1px solid;
+    padding: 10px;
+    padding-left: 30px;
+    background-color: #FFFFFF;
+    line-height: 1.5;
 }
+
+$active-color: red;
+.active-toc {
+  color: $active-color;
+}
+.active-toc:visited {
+  color: $active-color;
+}
+

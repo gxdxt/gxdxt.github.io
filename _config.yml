@@ -1,48 +1,64 @@
-# Setup
-title: gxdxt
-url: https://gxdxt.github.io
-paginate: 1
+# Site settings
+title: 고도 gxdxt 
+url: "https://gxdxt.github.io"
 baseurl: ""
-permalink: pretty
+description: >
+   gxdxt blog 
 
-# Gems
+# My information
+email: yxxsxxny@gmail.com
+author: gxdxt 
+profile: Unknown 
+twitter_username: gxdxt 
+github_username: gxdxt
+comment-support: utterances
+
+# Build settings
 plugins:
-  - jekyll-gist
   - jekyll-paginate
-  - jekyll-seo-tag
+  - jekyll-gist
 
-# Optimize Jekyll
-exclude:
-  - .editorconfig
-  - .git
-  - .jekyll-cache
-  - Gemfile
-  - Gemfile.lock
-  - LICENSE.md
-  - README.md
+permalink: /blog/:year/:month/:day/:title/
 
-sass:
-  sass_dir: _sass
-  style: :compressed
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
 
-# Options
+paginate: 10
+paginator_path: "/blog"
+paginate_path: "/blog/page:num/"
 
-# Replace this value and uncomment to enable Google Analytics tracking
-# ga_analytics: UA-000000-0
+# Collections
+collections:
+    wiki:
+        output: true
+        permalink: /:collection/:path/
 
-# Specify the author for blog posts
-author:
-  name: Gxdxt
-  url: https://twitter.com/gxdxt
-  email: yxxsxxny@gmail.com
+# Comment Service
+disqus:
+  id: gxdxt 
+  shortname: b
+utterances:
+  repo: gxdxt/gxdxt.github.io
+  issue-term: url
+  label: Comment
+  branch: master
 
-# Custom vars
-version: 3.0.0
+google_analytics:
+  ua: SAMPLE-VALUE
+  encrypted_ua: THIS-IS-SAMPLE-VALUE
 
-# Navbar page list
-nav:
-  - title: archive
-    url: /archive
+google_adsense:
+  client: SAMPLE-VALUE
 
-  - title: about
-    url: /about
+blame: "https://github.com/gxdxt/gxdxt.github.io/blame/master/_wiki"
+edit: "https://github.com/gxdxt/gxdxt.github.io/edit/master/_wiki"
+issue: "https://github.com/gxdxt/gxdxt.github.io/issues/new"
+
+timezone: "Asia/Seoul"
+
+# https://kramdown.gettalong.org/rdoc/Kramdown/Options.html - smart_quotes
+kramdown:
+    smart_quotes: ["apos", "apos", "quot", "quot"]

@@ -1,128 +1,120 @@
-# Dark Poole
+# Vimwiki + Jekyll + Github.io
 
-![Dark Poole](https://user-images.githubusercontent.com/13270895/89133355-26b3af80-d4e9-11ea-81cd-eacaa9c78320.png)
+## 시작하기
 
-Dark Poole is a permanent dark theme of the Poole theme by [@mdo](https://github.com/mdo). I made the theme darker, inspired by [Derek Kedziora's site](https://derekkedziora.com/). Unlike default Poole that utilizes CSS media queries to activate dark mode, the theme will stay dark regardless of the user's preference.
+블로그 스켈레톤을 fork 하세요.
 
-- I added a navbar that is easily customizable. Check out [Development](#development) to see how.
-- I also got rid of the "tagline" in the navbar. I think it looks cleaner without it.
-- Finally, I changed the default font size to 20px. I have 20/20 vision and still thought the original font size was too small.
+https://github.com/johngrib/johngrib-jekyll-skeleton
 
-That's it! I tried to be least intrusive as possible to the Poole code base.
+제 블로그를 fork하는 것보다 블로그 스켈레톤을 fork하는 것을 권합니다.
+블로그를 그냥 fork 하면 제 자기소개와 일기, 에세이까지 당신의 블로그의 컨텐츠가 됩니다.
 
-**I noticed that Poole's documentation is slightly outdated and misleading. This documentation will try to address most, if not all, of these issues.**
+* 만약 그냥 fork 하신다면 제 자기소개와 일기를 포함한 _wiki의 모든 md 파일을 삭제하고 사용하세요.
+* skeleton에 있는 문서들은 튜토리얼로 생각하고 읽어주시면 됩니다.
 
+다음 글을 읽으며 블로그의 구조를 파악하시면 운영에 도움이 될 것입니다.
+
+https://johngrib.github.io/wiki/my-wiki/
+
+## 설치하기
+
+루비가 설치되어 있지 않을 경우 루비를 설치해 주세요. 여기에서는 `rvm`으로
+설치하는 방법을 소개해 드립니다. 다른 방법으로도 루비를 설치할 수 있으니, 다른
+방법으로 하셔도 됩니다.  
+
+루비 버전은 [GitHub Pages Dependency versions](https://pages.github.com/versions/)을 보면 GitHub Pages에서는 `2.7.4`버전을
+사용하고 있으니 해당 버전을 설치해 줍니다.
+
+```bash
+# See also https://rvm.io/rvm/install
+$ gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+$ curl -sSL https://get.rvm.io | bash
+$ rvm install 2.7.4
+$ rvm use 2.7.4
+```
+
+그다음 `bundle install`을 실행하여 의존성들을 설치합니다.
+
+```bash
+$ bundle install
+```
+
+### Git hooks 추가하기
+
+새로운 글을 등록하면 메타 데이터를 업데이트해 주어야 합니다. 커밋하기 전에 이를
+자동으로 될 수 있도록 Git Hooks를 추가해야 합니다.
+
+```bash
+$ cp tool/pre-commit ./.git/hooks
+```
+
+### 노드 모듈 설치하기
+
+메타 데이터 생성을 위해서 `generateData.js`를 실행해야 합니다. 이를 실행하기
+위해서 `yamljs` 의존성을 설치해야 합니다.
+
+```bash
+$ npm install
+```
+
+## 실행하기
+
+```bash
+$ jekyll serve
+```
+
+## 글 작성하기
+
+### 새로운 카테고리 만들기
+
+카테고리가 있는 글을 작성하고 싶을 때는 카테고리를 먼저 만들어야 합니다.
+`/_wiki/category-name.md`같이 파일을 만들고 내용에는 다음을 추가해야 합니다.  
+
+이때 `layout`속성은 `category`가 되어야 합니다.
+
+```markdown
+---
+layout  : category
+title   : 제목을 입력합니다.
+summary : 
+date    : 2022-10-06 00:00:00 +0900
+updated : 2022-10-06 00:00:00 +0900
+tag     : 
+toc     : true
+public  : true
+parent  : index
+latex   : false
 ---
 
-## Contents
-
-- [Usage](#usage)
-- [Development](#development)
-- [Author](#author)
-- [License](#license)
-
-## Usage
-
-### 1. Install dependencies
-
-Poole is built on Jekyll and uses its built-in SCSS compiler to generate our CSS. Before getting started, you'll need to install the Jekyll gem and related dependencies:
-
-```bash
-$ gem install jekyll jekyll-gist jekyll-sitemap jekyll-seo-tag
+* TOC
+{:toc}
 ```
 
-### 2. Install bundler
+### 위키에 글 등록하기
 
-You must have bundler installed. If you already have bundler installed, please skip this step.
+위키를 작성할 때는 `/_wiki` 폴더 아래에 마크다운으로 파일을 작성합니다. 만약
+카테고리 아래에 글을 작성하고 싶을 경우에는 카테고리 이름으로 폴더를 만들고
+파일을 추가합니다. 예를 들어 `/_wiki/category-name/document.md`로 만들 수 있습니다.
+`layout`은 `wiki`가 되어야 합니다. `parent`는 상위 카테고리 이름을 작성해야
+합니다.  
 
-```bash
-# Update Rubygems
-$ gem update --system
-# Update bundler
-$ gem install bundler
+만약 상위 카테고리가 없을 경우에는 `parent`에 `index`를 입력합니다.
+
+```markdown
+---
+layout  : wiki
+title   : 제목을 적습니다
+date    : 2022-10-08 11:23:00 +0900
+updated : 2022-10-08 11:23:00 +0900
+tag     : 
+toc     : true
+public  : true
+parent  : category-name
+latex   : false
+---
+
+* TOC
+{:toc}
+
+내용을 적습니다.
 ```
-
-### 3. Running locally
-
-To see your Jekyll site with Poole applied, start a Jekyll server. In Terminal, from `/dark-poole` (or whatever your Jekyll site's root directory is named):
-
-```bash
-$ bundle exec jekyll serve
-```
-
-Open <http://localhost:4000> in your browser, and voilà.
-
-### 4. Serving it up
-
-If you host your code on GitHub, you can use [GitHub Pages](https://pages.github.com) to host your project.
-
-1. Fork this repo and switch to the `gh-pages` branch.
-1. If you're [using a custom domain name](https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages), modify the `CNAME` file to point to your new domain.
-1. If you're not using a custom domain name, **modify the `url` in `_config.yml`** to point to your GitHub Pages URL. Example: for a site hosted at `username.github.io`, use `http://username.github.io`.
-1. If you want to use your repo name as a base url, **set the `url`** to your repo link and **set the `baseurl`** to your repo name in **`_config.yml`**. Example: for site hosted on `https://username.github.io/dark-poole`, set `url` as `https://username.github.io/dark-poole` and `baseurl` as `/dark-poole`.
-1. Done! Head to your GitHub Pages URL or custom domain.
-
-No matter your production or hosting setup, be sure to verify the `baseurl` option file and `CNAME` settings. Not applying this correctly can mean broken styles on your site.
-
-### 5. Pagination for sites with base urls
-
-If you are using a base url for your site, (for example, hosted on `https://username.github.io/dark-poole`) you have to make some changes to get jekyll-pagination to work correctly:
-
-In `_config.yml`, add this line:
-
-```yaml
-paginate_path: "/baseurl/page:num/"
-```
-
-In `archive.md`, add `{{ site.baseurl }}` before `{{ post.url }}`
-
-```html
-<!-- Add "{{ site.baseurl }}" -->
-<li><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
-```
-
-In `index.html`, remove the `prepend:`:
-
-```html
-<!-- Remove "prepend:" in "prepend: relative_url" -->
-<a
-  class="pagination-item newer"
-  href="{{ paginator.previous_page_path | relative_url }}"
-  >Newer</a
->
-```
-
-## Development
-
-Poole has two branches, but only one is used for active development.
-
-- `master` for development. **All pull requests should be to submitted against `master`.**
-- `gh-pages` for hosted demo **Please avoid using this branch.**
-
-CSS is handled via Jeykll's built-in Sass compiler. Source Sass files are located in `_sass/`, included into `styles.scss`, and compile to `styles.css`.
-
-### Customize Navbar
-
-You can easily customize the navbar by tweaking the `_config.yml` file. Simply change the title and url of each of the nav elements, or add more. The order will be preserved in the site.
-
-```yaml
-nav:
-  - title: Blog
-    url: /archive
-
-  - title: About
-    url: /about
-```
-
-## Author
-
-**Mark Otto**
-
-- <https://github.com/mdo>
-- <https://twitter.com/mdo>
-
-## License
-
-Open sourced under the [MIT license](LICENSE.md).
-
-<3
