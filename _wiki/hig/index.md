@@ -6,6 +6,6 @@ toc     : true
 public  : true
 comment : false
 date    : 2022-12-16 12:42:03 +0900
-regenerate: true
+parent : [[/hig]]
 ---
 

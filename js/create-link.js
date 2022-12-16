@@ -78,6 +78,12 @@
 })();
 
 ;(function() {
+	var content = document.querySelector('article.post-content');
+        content.innerHTML = content.innerHTML.replace(/\[\[(.+?)\]\]\{(.+?)\}/g, '<a href="../$1">$2</a>');
+        content.innerHTML = content.innerHTML.replace(/\[\[(.+?)\]\]/g, '<a href="../$1">$1</a>');
+})();
+
+;(function() {
     // 파일 이름이 링크 텍스트로 드러난 것을 문서의 타이틀로 교체해준다.
     const list = document.querySelectorAll('.no-labeled-link');
 
