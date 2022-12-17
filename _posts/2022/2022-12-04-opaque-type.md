@@ -25,16 +25,16 @@ public  : true
 
 하지만 이를 `some`을 이용해 변수로 만들자, 원하는 바 대로 동작하였습니다.
 ```swift
-    var drag: some Gesture {
-        DragGesture()
-            .onChanged { value in
-                self.hotKeyLoc = value.location
-                self.hotKeyColor = .red
-            }
-            .onEnded { value in
-                self.hotKeyColor = .blue
-            }
-    }
+var drag: some Gesture {
+	DragGesture()
+		.onChanged { value in
+			self.hotKeyLoc = value.location
+			self.hotKeyColor = .red
+		}
+		.onEnded { value in
+			self.hotKeyColor = .blue
+		}
+}
 ```
 
 > 이후 확인 결과 some이 해당 오류를 해결하는 근본적인 해결책은 아니었습니다,,,
