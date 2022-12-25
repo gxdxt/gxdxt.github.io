@@ -3,7 +3,7 @@ layout  : wiki
 title   : Modal로 데이터를 넘기는 방법 
 summary : sheet는 눈보다 빠르다.
 date    : 2022-12-25 16:28:28 +0900
-updated : 2022-12-25 16:44:53 +0900
+updated : 2022-12-25 16:59:04 +0900
 tags    : Swift Sheet Modal 
 toc     : true
 public  : true
@@ -167,3 +167,5 @@ struct EditWordView: View {
 # 결론
 
 ## 응애!
+
+## Merry Christmas :)
