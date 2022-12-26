@@ -10,7 +10,7 @@ regenerate: true
 ## [[HOW-TO]]
 
 * [[mathjax-latex]]
-
+* [[vimwiki-config]]
 ---
 
 ## [[hig]]
