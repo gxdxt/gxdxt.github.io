@@ -3,7 +3,6 @@
  "title": "wikiR",
  "url": "/wiki/index",
  "children": [
-  "how-to",
-  "opaque-type"
+  "how-to"
  ]
 }
