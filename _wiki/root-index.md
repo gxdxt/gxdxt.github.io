@@ -7,7 +7,7 @@ comment : false
 regenerate: true
 ---
 
-## [[HOW-TO]]
+## [[how-to]]
 
 * [[mathjax-latex]]
 * [[vimwiki-config]]
