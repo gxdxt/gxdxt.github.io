@@ -17,7 +17,7 @@ regenerate: true
 
 * [[accessibility]]
 * [[branding]]
-* [[test]]
+* [[materials]]
 ---
 
 ## blog posts
