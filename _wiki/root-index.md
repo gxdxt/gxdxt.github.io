@@ -15,9 +15,9 @@ regenerate: true
 
 ## [[hig]]
 
-* [[accessibility]]
-* [[branding]]
-* [[materials]]
+* [[hig/accessibility]]
+* [[hig/branding]]
+* [[hig/materials]]
 
 
 ## blog posts
