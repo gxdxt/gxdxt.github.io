@@ -7,17 +7,12 @@ comment : false
 regenerate: true
 ---
 
-## [[how-to]]
-
-* [[mathjax-latex]]
-* [[vimwiki-config]]
-
-
 ## [[hig]]
 
 * [[hig/accessibility]]
 * [[hig/branding]]
 * [[hig/materials]]
+* [[hig/color]]
 
 
 ## blog posts

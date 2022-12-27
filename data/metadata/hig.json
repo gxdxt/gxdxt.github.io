@@ -8,6 +8,7 @@
  "children": [
   "hig/accessibility",
   "hig/branding",
+  "hig/color",
   "hig/materials"
  ]
 }
