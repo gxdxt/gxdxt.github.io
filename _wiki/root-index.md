@@ -11,14 +11,14 @@ regenerate: true
 
 * [[mathjax-latex]]
 * [[vimwiki-config]]
----
+
 
 ## [[hig]]
 
 * [[accessibility]]
 * [[branding]]
 * [[materials]]
----
+
 
 ## blog posts
 <div>
