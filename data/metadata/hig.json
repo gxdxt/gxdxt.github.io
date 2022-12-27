@@ -1,13 +1,13 @@
 {
  "type": "wiki",
- "title": "HIG",
- "parent": "index",
+ "title": "H.I.G",
+ "parent": "root-index",
  "url": "/wiki/hig",
- "updated": "2022-12-27 23:29:05 +0900",
+ "updated": "2022-12-27 23:34:45 +0900",
  "resource": "0F/DC51F7-C589-4684-B317-2A41C2212F67",
  "children": [
-  "accessibility",
-  "branding",
-  "materials"
+  "hig/accessibility",
+  "hig/branding",
+  "hig/materials"
  ]
 }

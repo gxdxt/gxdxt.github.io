@@ -1,9 +1,9 @@
 {
  "type": "wiki",
- "title": "ROOT",
+ "title": "wikiR",
  "url": "/wiki/index",
- "updated": "2021-07-25 18:00:13 +0900",
  "children": [
-  "how-to"
+  "how-to",
+  "opaque-type"
  ]
 }
