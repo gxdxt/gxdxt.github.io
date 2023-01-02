@@ -9,6 +9,7 @@
   "hig/accessibility",
   "hig/branding",
   "hig/color",
+  "hig/darkMode",
   "hig/materials"
  ]
 }

@@ -13,7 +13,7 @@ regenerate: true
 * [[hig/branding]]
 * [[hig/materials]]
 * [[hig/color]]
-
+* [[hig/darkMode]]
 
 ## blog posts
 <div>
