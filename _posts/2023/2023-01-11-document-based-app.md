@@ -3,7 +3,7 @@ layout  : wiki
 title   : Document Based App
 summary : Document Based App
 date    : 2023-01-11 22:42:02 +0900
-updated : 2023-01-11 22:45:03 +0900
+updated : 2023-01-13 00:25:41 +0900
 tags    : DocumentBasedApp
 toc     : true
 public  : true
@@ -99,4 +99,12 @@ struct DocumentBasedAppPracticeApp: App {
     }
 }
 ```
+
+
+오류
+
+- 최근 항목, 즉 root에서 생성은 안되고
+- Executable File이 의심스럽다.
+- info.plist > Supports Document Browser 추가 후, YES
+- [ref](https://www.appcoda.com/files-app-integration/)
 
