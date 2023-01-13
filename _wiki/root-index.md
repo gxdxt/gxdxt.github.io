@@ -14,6 +14,7 @@ regenerate: true
 * [[hig/materials]]
 * [[hig/color]]
 * [[hig/darkMode]]
+* [[hig/icon]]
 
 ## blog posts
 <div>
