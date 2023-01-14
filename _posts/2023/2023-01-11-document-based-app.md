@@ -3,7 +3,7 @@ layout  : wiki
 title   : Document Based App
 summary : Document Based App
 date    : 2023-01-11 22:42:02 +0900
-updated : 2023-01-13 00:25:41 +0900
+updated : 2023-01-14 22:16:49 +0900
 tags    : DocumentBasedApp
 toc     : true
 public  : true
@@ -27,14 +27,24 @@ import UniformTypeIdentifiers
 struct TextFile: FileDocument {
     
     /// essential methods 1
+	/// FileDocument Protocol을 위한 init
+    /// filerWrapper는 file이 우리 device 어딘가에 저장이 될텐데,
+    /// 우린 알바 아니다.
+    /// 그걸 꺼내서 우리가 읽을 수 있도록 하는 메소드
+ 
     init(configuration: ReadConfiguration) throws {
         if let data = configuration.file.regularFileContents {
             text = String(decoding: data, as: UTF8.self)
         }
     }
+	
     /// essential methods 2
+    /// 읽었으면 저장할 줄도 알아야지?
     func fileWrapper(configuration: WriteConfiguration) throws -> FileWrapper {
+        // text를 저장할 수 있게 먼저 Data 타입으로 변환
         let data = Data(text.utf8)
+		
+        // fileWrapper로 감싸야지
         return FileWrapper(regularFileWithContents: data)
     }
     
@@ -50,29 +60,8 @@ struct TextFile: FileDocument {
     init(initialText: String = "") {
         text = initialText
     }
-    
-    /// FileDocument Protocol을 위한 init
-    /// filerWrapper는 file이 우리 device 어딘가에 저장이 될텐데,
-    /// 우린 알바 아니다.
-    /// 그걸 꺼내서 우리가 읽을 수 있도록 하는 메소드
-    init(fileWrapper: FileWrapper, contentType: UTType) throws {
-        /// read the file content
-        if let data = fileWrapper.regularFileContents {
-            text = String(decoding: data, as: UTF8.self)
-        }
-    }
-    
-    /// 읽었으면 저장할 줄도 알아야지?
-    func write(to fileWrapper: inout FileWrapper, contentType: UTType) throws {
-        // text를 저장할 수 있게 먼저 Data 타입으로 변환
-        let data = Data(text.utf8)
-        // fileWrapper로 감싸야지
-        fileWrapper = FileWrapper(regularFileWithContents: data)
-        
-        // inout FileWrapper이기 때문에, 무언가 자동화가 되서 신경 안써도 되는게 있나봐
-    }
-    
-    
+   
+   }
 }
 
 
@@ -85,6 +74,21 @@ struct ContentView: View {
     }
 }
 ```
+
+`UniformTypeIdentifiers`를 import 해서, Document화를 원하는 데이터 타입을 불러와야 합니다.
+제가 이번에 Document화를 진행할 타입은 `txt` 타입의 데이터이기 때문에 `TextFile`이라는 구조체를 선언합니다.
+그리고, 해당 파일을 읽고, 저장할 수 있도록 `FileDocument` 프로토콜을 따르도록 합니다.
+해당 프로토콜은 의무적으로 선언해야 하는 메소드가 2개 있습니다.
+
+- `init(configuration: ReadConfiguration) throws` 
+- `fileWrapper(configuration: WriteCOnfiguration) throws -> FileWrapper`
+
+이 두 메소드가 `FileDocument` 프로토콜에서 제시하는 메소드 인데요.
+각 메소드의 인자값의 데이터 타입을 통해 눈치챌 수 있듯, init은 읽기, fileWrapper는 쓰기 를 위한 메소드 입니다.
+
+
+
+
 
 ```swift
 import SwiftUI
@@ -100,6 +104,10 @@ struct DocumentBasedAppPracticeApp: App {
 }
 ```
 
+WindowGroup이 아닌, DocumentGroup으로 ContentView를 감싸니, 전형적인 Document Based App의 화면처럼 보이게 되었습니다.
+자동으로 설정 툴바와 `add item` 툴바가 생성되었습니다.
+
+***
 
 오류
 
