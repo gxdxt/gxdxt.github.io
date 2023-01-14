@@ -11,6 +11,7 @@
   "hig/color",
   "hig/darkMode",
   "hig/icon",
+  "hig/image",
   "hig/materials"
  ]
 }
