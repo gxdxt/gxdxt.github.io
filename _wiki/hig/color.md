@@ -3,7 +3,7 @@ layout  : wiki
 title   : Color
 summary : 
 date    : 2022-12-28 00:09:01 +0900
-updated : 2022-12-28 00:09:44 +0900
+updated : 2023-01-16 21:53:39 +0900
 tags    : hig 
 toc     : true
 public  : true
@@ -18,6 +18,20 @@ latex   : false
 > Judicious use of color can enhance communication, evoke your brand, provide visual continuity, communicate status and feedback, and help people understand information.
 
 > 신중한 색상의 사용은 의사소통을 강화하고, 브랜드를 각인시키고, 시각적 지속성을 제공하고, 상태와 피드백을 주고 받고 사람들이 정보를 이해하는 것을 도울 수 있습니다.
+
+## Check List
+
+- [ ] 화면에 전달하는 메시지가 색상으로 인해 희석되지 않나요?
+- [ ] 색상을 사용하는 곳이 중요한 정보를 전달하고 있나요?
+- [ ] 같은 색상을 사용하는 요소가 같은 의미를 가지고 있나요?
+- [ ] 다크모드 / 라이트모드에서 색상 변경이 잘 동작하나요?
+- [ ] 여러 디스플레이 환경에서 의도한 색상이 나오는지 테스트했나요?
+- [ ] 의도한 색상이 주변 요소들에 의해 변할 수 있는 것을 고려했나요?
+- [ ] 사용자들에게 색상을 선택할 수 있는 권한을 주었나요?
+	- [ ] 시스템에서 제공하는 컬러만 선택할 수 있도록 하였나요?
+
+
+
 
 ## Best Practices
 

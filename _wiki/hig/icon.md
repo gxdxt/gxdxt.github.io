@@ -3,7 +3,7 @@ layout  : wiki
 title   : Icon
 summary : 
 date    : 2023-01-14 00:29:40 +0900
-updated : 2023-01-14 21:58:51 +0900
+updated : 2023-01-16 21:52:57 +0900
 tags    : hig 
 toc     : true
 public  : true
@@ -19,7 +19,7 @@ latex   : false
 
 > 효과적인 아이콘은 그래픽 에셋으로, 사람들이 즉각적으로 이해하는 방식으로 하나의 개념을 표현합니다.
 
-## check list
+## Check List
 
 - [ ] 인식하기 쉽고 간단한가요?
 - [ ] 다른 아이콘들과 일관성을 갖고 있나요?
