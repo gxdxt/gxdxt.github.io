@@ -3,7 +3,7 @@ layout  : wiki
 title   : Image
 summary : 
 date    : 2023-01-14 21:59:13 +0900
-updated : 2023-01-14 22:00:11 +0900
+updated : 2023-01-18 00:17:13 +0900
 tags    : hig
 toc     : true
 public  : true
@@ -18,6 +18,13 @@ latex   : false
 > To make sure your artwork looks great on all devices you support, learn how the system displays content on the screen and how to deliver art at the appropriate scale factors.
 
 > 당신이 지원하는 모든 기기에서 당신의 작품이 훌륭하게 보이도록 확신하기 위해, 시스템이 어떻게 화면에 컨텐츠를 보여주는지, 그리고 적절한 스케일 팩터에 어떻게 예술을 전달하는지 배워야 합니다.
+
+## Check List
+
+- [ ] 제공하는 이미지들이 고해상도인가요?
+- [ ] 이미지에 색상 프로파일이 포함되어 있나요?
+- [ ] 실제 장치에서 이미지를 테스트했나요?
+
 
 ## Scale factors
 - 1x
