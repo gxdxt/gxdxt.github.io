@@ -19,6 +19,8 @@ regenerate: true
 
 ## [[combine]]
 
+* [[combine/combine-with-firebase]]
+
 ## blog posts
 <div>
     <ul>

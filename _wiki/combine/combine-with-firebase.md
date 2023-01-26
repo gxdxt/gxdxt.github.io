@@ -1,0 +1,195 @@
+---
+layout  : wiki
+title   : Combine을 통해 Firebase에서 데이터를 불러오자!
+summary : Combine + Firebase
+date    : 2023-01-08 02:53:12 +0900
+updated : 2023-01-27 03:23:03 +0900
+tags    : combine firebase
+toc     : true
+public  : true
+parent  : [[/combine]]
+latex   : false
+---
+* TOC
+{:toc}
+
+# Combine을 통해 Firestore에서 데이터를 불러오자!
+
+-   다양한 입력에 반응하는 무언가를 설정하는 경우
+
+- Combine으로 Firestore 연동하여 데이터 가져오기
+
+- View
+- ViewModel
+- Service
+
+- View
+- ViewModel
+- Service
+- Repository
+- Provider
+
+# 서론
+
+[공식 문서](https://developer.apple.com/documentation/combine) 에서 `Combine`에 대해 다음과 같이 정의합니다.
+
+> Customize handling of asynchronous events by combining event-processing operators.
+> 이벤트-프로세스하는 오퍼레이터들을 결합하여 비동기 이벤트들을 다루는 것을 개인화하는 것
+`Operator`에 대한 개념이 명확하지 않아, 이해가 빠르게 되진 않지만 `어떤 것들을 결합`하여 비동기 이벤트들을 제 입맛에 맞게 다룰 수 있게 해주는 기술이라고 생각이 드네요.
+조금 더 깊게 들어가 볼까요?
+
+> The Combine framework provides a declarative Swift API for processing values over time. These values can represent many kinds of asynchronous events. Combine declares _publishers_ to expose values that can change over time, and _subscribers_ to receive those values from the publishers.
+> 이 Combine Framework는 시간의 흐름에 따르는 values을 처리하는 선언형 스위프트 API를 제공한다.
+> 이 values는 다양한 종류의 비동기 이벤트들을 의미할 수 있다. Combine은 _publishers_ 를 선언하여 시간의 흐름에 따라 변할 수 있는 values를 노출하고, _subscribers_ 를 선언하여 publishers로 부터 values를 받을 수 있게 한다.
+이 문장 안에 `Combine`을 이해하기 위한 모든 개념들이 들어와 있네요!
+나타난 필수 용어를 정리해 볼까요?
+
+필수 용어
+- Publisher
+- Subscriber
+- Operator
+
+
+먼저 Publisher부터 보도록 하겠습니다.
+
+> - The [`Publisher`](https://developer.apple.com/documentation/combine/publisher) protocol declares a type that can deliver a sequence of values over time. Publishers have _operators_ to act on the values received from upstream publishers and republish them.
+> - `Publisher`  프로토콜은 타입을 선언합니다. 그 타입은 시간에 흐름에 따르는 일련의 `values`를 전달할 수 있습니다. `Publishers`는 `operators`를 가지고 상위 `publishers`에게서 받은 `values`들을 활용하고 그것들을 재배포합니다.
+여기서 알 수 있는 것은, 
+- `Publisher`는 프로토콜이다.
+- `Operators`는 `Publisher`에 귀속되어 있다.
+- Combine 구조는 여러 겹의 `Publishers`로 이루어져 있다.
+
+
+다음으로 Subscriber입니다.
+
+> -   At the end of a chain of publishers, a [`Subscriber`](https://developer.apple.com/documentation/combine/subscriber) acts on elements as it receives them. Publishers only emit values when explicitly requested to do so by subscribers. 
+> - `Publishers`의 사슬 끝에서, `Subscriber`는 `values`를 받는 대로 elements에 작동합니다. `Publishers`는 단지 `subscribers`가 그렇게 하라고 명백히 요청한 상황에만 `values`를 보냅니다.
+여기서 알 수 있는 것은,
+- `Subscriber`는 유일하게 Combine의 구조 끝에 존재한다.
+
+실제로 코드를 보기 전까지는 이 둘의 모습이 어떻게 재현되어 있는지 상상이 잘 되지 않았습니다.
+코드를 한 번 보실까요?
+
+# 본론
+
+
+그럼 일반적으로 `Publisher`는 어떤 파일에 있고, `Subscriber`는 또 어디 있을까요?
+많은 개발자 분들이 사용하시는 `MVVM` 을 기준으로 먼저 설명 드리겠습니다.
+
+## MVVM에서의 Combine
+
+> MVVM에 대한 설명은 이 글에서 제공하지 않습니다!
+App의 동작을 먼저 상상해 봅시다.
+
+Client - App - Database
+
+Client는 App을 통해 Database에 있는 데이터들을 확인할 수 있죠?
+
+***
+
+조금 더 구체적으로 들어가 볼까요?
+
+Client - View - ViewModel - Database
+
+Client는 View를 통해 ViewModel이  Database에서 가져온 데이터들을 확인할 수 있습니다.
+기능들에 대해 더욱 세분화 해볼까요?
+
+***
+
+Client - View - ViewModel - Service - Store - Database
+
+새로이 추가된 Service와 Store는 ViewModel에서 규정하기 애매한 작업들을 대신 처리해줍니다.
+Service는 ViewModel에서 요구한 데이터를 Store에게 전달하는 역할
+Store는 Service가 요청한 데이터를 Database에서 꺼내와, 필요하다면 Decode를 진행합니다.
+
+말로만 설명드리지 않고, 실제 코드를 가져와 보겠습니다.
+
+제가 직접 작업했던 파일입니다.
+
+- ViewModel
+
+```swift
+import Combine
+import SwiftUI
+class BadgesViewModel: ObservableObject { 
+    @Published var badges: [Badge] = [Badge]()
+    private var cancellables = Set<AnyCancellable>()
+    
+    
+    func loadBadges() {
+        BadgesService.fetchBadges()
+            .sink { (completion) in
+                switch completion {
+                case .failure(let error):
+                    print(error)
+                    return
+                case .finished:
+                    return
+                    
+                }
+            } receiveValue: { [weak self] (badges) in
+                self?.badges = badges
+            }
+            .store(in: &cancellables)
+    }
+}
+```
+
+ViewModel에선 View에서 요구하는 데이터 (여기선 `badges`라는 배열이 되겠네요!) 를 BadgesService에 요청합니다. 여기서 `.fetchBadges()`에 반환되는 타입이 `Publisher`이기 때문에 여러 `operators` (여기선 `.sink`가 되겠네요!) 를 사용할 수 있습니다. (`.store`의 경우 `Publisher`에 연결되는 것이 아닌, `cancellable`에 연결되는 개념입니다.)
+그럼 여기서 등장한 `operator`에 의미를 알아볼까요?
+
+- [sink(receiveValue:)](https://developer.apple.com/documentation/combine/fail/sink(receivevalue:))
+	- Attaches a subscriber with closure-based behavior to a publisher that never fails.
+	- A cancellable instance, which you use when you end assignment of the received value. Deallocation of the result will tear down the subscription stream.
+- [store(in:)](https://developer.apple.com/documentation/combine/cancellable/store(in:)-95sfl)
+	- Stores this cancellable instance in the specified set.
+
+
+
+- Service
+
+```swift
+import Combine
+import FirebaseFirestore
+import FirebaseFirestoreSwift
+struct BadgesService {
+    static let db = Firestore.firestore()
+    
+    static func fetchBadges() -> AnyPublisher<[Badge], Error> {
+        Future<[Badge], Error> { promise in
+            self.db.collection("Badges")
+                .getDocuments { (snapshot, error) in
+                    if let error = error {
+                        promise(.failure(error))
+                        return
+                    }
+                    guard let snapshot = snapshot else {
+                        print("snapshot error")
+                        return
+                    }
+                    
+                    var items = [Badge]()
+                    snapshot.documents.forEach { document in
+                        if let item = try? document.data(as: Badge.self) {
+                            print("badge : \(item)")
+                            items.append(item)
+                        }
+                        
+                    }
+                    promise(.success(items))
+                    
+                }
+        }
+        .eraseToAnyPublisher()
+    }
+}
+```
+
+
+
+# 결론
+
+- 많이 배웠다!
+- 앱의 규모가 커질 수록, 기능이 많아질 수록 비대해지는 것
+- Publisher의 operators를 적절히 사용할 수 있는 것이 중요하겠다!
+- 언제 Combine을 쓰면 좋은지
