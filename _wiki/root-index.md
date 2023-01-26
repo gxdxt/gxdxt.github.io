@@ -17,7 +17,7 @@ regenerate: true
 * [[hig/icon]]
 * [[hig/image]]
 
-
+## [[combine]]
 
 ## blog posts
 <div>

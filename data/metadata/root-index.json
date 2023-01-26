@@ -3,6 +3,7 @@
  "title": "wiki",
  "url": "/wiki/root-index",
  "children": [
+  "combine",
   "hig"
  ]
 }
