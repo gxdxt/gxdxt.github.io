@@ -20,6 +20,8 @@ regenerate: true
 ## [[combine]]
 
 * [[combine/combine-with-firebase]]
+* [[combine/api-with-combine]]
+
 
 ## blog posts
 <div>
