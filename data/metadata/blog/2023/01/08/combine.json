@@ -2,8 +2,8 @@
  "type": "blog",
  "title": "Combine을 통해 Firestore에서 데이터를 불러오자!",
  "summary": "Combine + Firestore",
- "parent": "",
+ "parent": "combine",
  "url": "/blog/2023/01/08/combine",
- "updated": "2023-01-12 21:11:54 +0900",
+ "updated": "2023-01-27 03:15:01 +0900",
  "children": []
 }
