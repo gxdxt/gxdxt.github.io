@@ -16,26 +16,29 @@ latex   : false
 # Combine을 통해 API 통신을 해보자
 
 
+
+
 1. Publisher 생성
-1. 어떠한 패키지에 대한 매월 정기구독을 가입함
+어떠한 패키지에 대한 매월 정기구독을 가입함
 ```swift
 URLSession.shared.dataTaskPublisher(for: url)
 ```
 
 2. subscribe publisher을 background Thread로 옮겨줌
-2. 고객이 주문하면 회사는 패키지를 공장에서 생산함
+고객이 주문하면 회사는 패키지를 공장에서 생산함
 ```swift
 .subscribe(on: DispatchQueue.global(qos: .background))
 ```
 
+
 3. Main Thread에서 수신함
-3. 회사는 패키지를 배송하고 고객은 상품을 전달받음
+회사는 패키지를 배송하고 고객은 상품을 전달받음
 ```swift
 .receive(on: DispatchQueue.main) // UI가 업데이트 되었다는 의미
 ```
 
 4. tryMap (data가 있는지 없는지 상태가 좋은지 확인)
-4. 사용자는 패키지 상자의 상태가 손상되었는지 확인함
+사용자는 패키지 상자의 상태가 손상되었는지 확인함
 ```swift
 .tryMap { data, response in // 실패 및 오류를 야기할 수 있는 맵
    //some code
@@ -54,13 +57,13 @@ URLSession.shared.dataTaskPublisher(for: url)
 ```
 
 5. decode (데이터를 PostModel로 디코딩)
-5. 상자를 열고 항목이 올바른지 확인함
+상자를 열고 항목이 올바른지 확인함
 ```swift
 .decode(type: [PostModel].self, decoder: JSONDecoder())
 ```
 
 6. sink(항목을 앱에 추가한다.)
-6. 구입한 항목을 사용함!
+구입한 항목을 사용함!
 ```swift
 .sink { completion in
 	print("Completion: \(completion)")
@@ -79,7 +82,7 @@ URLSession.shared.dataTaskPublisher(for: url)
 
 
 7. store(필요한 경우 구독을 취소함)
-7. 위 구독은 언제든지 취소가 가능함
+위 구독은 언제든지 취소가 가능함
 - ViewModel에서 `var cancellables = Set<AnyCancellable>()` 코드 추가
 ```swift
 .store(in: &cancellables)
