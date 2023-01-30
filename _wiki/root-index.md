@@ -21,7 +21,7 @@ regenerate: true
 
 * [[combine/combine-with-firebase]]
 * [[combine/api-with-combine]]
-
+* [[combine/convenience-publishers]]
 
 ## blog posts
 <div>
