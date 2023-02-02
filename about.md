@@ -35,13 +35,14 @@ latex: true
 * "실수를 숨기지 않습니다."
 	- 실수와 실패를 잘 하기 위한 준비가 되어 있습니다.
 	- 실수한 기록들, 실패한 기록들을 블로그에 남기고 공개하며, 성장을 꾀하고 있습니다.
+	- [관련 블로그 글](https://gxdxt.github.io/wiki/combine/)
 * "과거를 통해 미래를 준비합니다.”
 	- SwiftUI의 기본이된 Objective-C에 대한 공부를 꾸준히 하고 있습니다.
 	- 같은 기능을 수행하는 앱을 Objective-C, UIKit, SwiftUI로 만들어 보며, 애플 플랫폼의 언어 흐름을 파악하고, 사용해보았습니다.
 * "그라운드 룰과 용어집을 통해 소통의 가치를 최대화합니다.”
 	- 
 * "사용자 사용하기 좋은 앱에 대해 고민합니다."
-	- 애플의 Human Interface Guidelines를 학습하고 이에 대한 Check-list를 만들었습니다.
+	- 애플의 Human Interface Guidelines를 학습하고 이에 대한 [Check-list](https://gxdxt.github.io/wiki/hig/)를 만들었습니다.
 
 
 ## Skill 
