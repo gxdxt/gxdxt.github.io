@@ -23,9 +23,9 @@ latex: true
 
 ## Motto
 
-> Whenever you fall, pick something up. – Oswald Avery
+> Mais la question n'est pas là. Que faisons-nous ici, voilà ce qu'il faut se demander. Nous avons la chance de le savoir. Oui, dans cette immense confusion, une seule chose est claire nous attendons que Godot vienne. - En Attendant Godot, Samuel Backett
 >
-> 넘어지면 무언가를 주워라. - 오스왈드 에이버리
+> 문제는 지금 이 자리에서 우리가 뭘 해야 하는가를 따져보는 거란 말이다. 우린 다행히도 그걸 알고 있거든. 이 모든 혼돈 속에서도 단 하나 확실한 게 있지. 그건 고도가 오기를 우린 기다리고 있다는 거야. - 고도를 기다리며, 사뮈엘 베케트 
 
 
 ## Introduce
