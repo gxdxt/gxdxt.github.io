@@ -3,7 +3,7 @@ layout  : wiki
 title   : Combine을 통해 API 데이터를 불러오자!
 summary : Combine + API
 date    : 2023-01-27 03:33:31 +0900
-updated : 2023-02-04 01:56:08 +0900
+updated : 2023-02-04 02:18:08 +0900
 tags    : Combine, API
 toc     : true
 public  : true
@@ -87,6 +87,27 @@ URLSession.shared.dataTaskPublisher(for: url)
 ```
 
 ## 추상화
+
+- Combine을 통해 API를 호출할 때에는 추상화를 작업하는 것이 좋습니다. url query에 따라서 받아오는 값이 달라지기 때문에 여러 경우의 수를 하나하나 작성해 줄 수 없기 때문입니다. 그렇다면  Combine을 통한 API 추상화에는 어떠한 요소들이 필요한지 알아보도록 하겠습니다.
+
+### Extension
+
+- URLSession
+- URLComponents
+
+### Protocol
+
+- APIProtocol
+	- url: URLComponents
+
+### Providier
+
+- APIProtocol을 conform하는 Provider
+
+- SearchAPIProvider
+	- 
+- LookupAPIProvider
+	- 
 
 - [ ] Protocol
 	- [ ] APIProtocol
