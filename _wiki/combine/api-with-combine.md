@@ -3,7 +3,7 @@ layout  : wiki
 title   : Combine을 통해 API 데이터를 불러오자!
 summary : Combine + API
 date    : 2023-01-27 03:33:31 +0900
-updated : 2023-01-30 22:21:21 +0900
+updated : 2023-02-04 01:56:08 +0900
 tags    : Combine, API
 toc     : true
 public  : true
@@ -86,4 +86,17 @@ URLSession.shared.dataTaskPublisher(for: url)
 .store(in: &cancellables)
 ```
 
+## 추상화
+
+- [ ] Protocol
+	- [ ] APIProtocol
+	- [ ] URLComponents
+- [ ] SearchAPIProvider : APIProtocol
+	- [ ] props
+		- [ ] url : URLComponents
+	- [ ] methods
+		- [ ] -> AnyPublisher return하는거 만들고
+- [ ] ViewModel
+	- [ ] SearchAPIProvider 호출
+	- [ ] methods. 쓰면서 동시에 .sink
 
