@@ -7,6 +7,7 @@
  "resource": "0F/DC51F7-C589-4684-B317-2A41C2212F67",
  "children": [
   "hig/accessibility",
+  "hig/app-icon",
   "hig/branding",
   "hig/color",
   "hig/darkMode",

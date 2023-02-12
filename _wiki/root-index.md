@@ -16,6 +16,7 @@ regenerate: true
 * [[hig/darkMode]]
 * [[hig/icon]]
 * [[hig/image]]
+* [[hig/app-icon]]
 
 ## [[combine]]
 
