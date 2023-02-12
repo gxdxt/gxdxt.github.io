@@ -17,6 +17,7 @@ regenerate: true
 * [[hig/icon]]
 * [[hig/image]]
 * [[hig/app-icon]]
+* [[hig/app-icon/create-app-icon-the-voca]]
 
 ## [[combine]]
 
