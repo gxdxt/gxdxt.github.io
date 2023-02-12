@@ -3,7 +3,7 @@ layout  : wiki
 title   : 꼼꼬미 단어장(The Voca)의 Icon을 만들어보자! (feat. H.I.G)
 summary : hig
 date    : 2023-02-12 21:32:47 +0900
-updated : 2023-02-12 21:34:17 +0900
+updated : 2023-02-12 21:53:28 +0900
 tags    : 
 toc     : true
 public  : true
@@ -29,7 +29,7 @@ latex   : false
 
 ![[1st_trial_white.png]]
 ## Second Trial
-![[2nd_trial(1).png]]
+![[https://user-images.githubusercontent.com/69609972/218311730-e2124440-7f5d-4697-b693-1977ceee68c4.png]]
 
 ![[2nd_trial(2).jpg]]
 
