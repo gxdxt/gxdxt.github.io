@@ -3,7 +3,7 @@ layout  : wiki
 title   : App Icon
 summary : 
 date    : 2023-02-12 20:22:27 +0900
-updated : 2023-02-12 20:23:09 +0900
+updated : 2023-02-14 23:40:42 +0900
 tags    : hig
 toc     : true
 public  : true
@@ -18,6 +18,18 @@ latex   : false
 > A unique, memorable icon communicates the purpose and personality of your experience and can help people recognize your app or game at a glance in the App Store and on their devices.
 
 > 독창적이고 기억할 수 있는 아이콘은 당신의 경험의 목적과 개성을 이야기해주고 사람들이 그들의 장치에서, 앱 스토어에서 한 눈에 당신의 앱 (혹은 게임)을 알아차릴 수 있도록 도와준다.
+
+## Check List
+
+- [ ] 아이콘이 간단한가?
+- [ ] 아이폰, 아이패드, 맥 모두에서 잘 어울리는가?
+- [ ] 텍스트가 들어가 있는가?
+	- [ ] 있다면, 꼭 필요한 경우인가?
+- [ ] 사진을 아이콘으로 만든 것인가?
+- [ ] UI 컴포넌트를 복제한 부분이 있는가?
+- [ ] 가장자리에 여백이 있는가?
+- [ ] 앱 아이콘의 대체제를 제공하는가?
+- [ ] 애플의 하드웨어 제품의 복제품을 사용하는가?
 
 ## Best practices
 
