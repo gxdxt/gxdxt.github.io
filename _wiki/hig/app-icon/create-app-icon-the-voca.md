@@ -3,7 +3,7 @@ layout  : wiki
 title   : 꼼꼬미 단어장(The Voca)의 Icon을 만들어보자! (feat. H.I.G)
 summary : hig
 date    : 2023-02-12 21:32:47 +0900
-updated : 2023-02-15 00:15:00 +0900
+updated : 2023-02-28 14:08:26 +0900
 tags    : 
 toc     : true
 public  : true
@@ -30,8 +30,8 @@ latex   : false
 아래 나온 것들이 그 디자인인데, 다시 보니 형편 없는 디자인이었습니다.
 아래 디자인에 대해 H.I.G 기준으로 평가해보도록 하겠습니다.
 
-![1st_trial(1)](https://user-images.githubusercontent.com/69609972/218312336-9f80a582-754f-4067-b712-b0a050f77c66.png)
-![1st_trial(2)](https://user-images.githubusercontent.com/69609972/218312338-d318cc56-4ad1-4fb7-930e-4cf5aab6e7e3.png)
+![1st_trial(1)](https://user-images.githubusercontent.com/69609972/221759200-1efcd8bc-d1f5-4478-90d6-a9a269c3cf98.png)
+![1st_trial(2)](https://user-images.githubusercontent.com/69609972/221759260-c825277a-2f94-4719-8fb9-34e0f9ce592c.png)
 
 어떤 문제가 있는 것처럼 보이시나요?
 H.I.G 에서는 `불필요한 텍스트를 아이콘에 넣지마라` 라고 안내합니다.
@@ -44,9 +44,9 @@ H.I.G 에서는 `불필요한 텍스트를 아이콘에 넣지마라` 라고 안
 
 
 ### Second Trial
-![2nd_trial(1)](https://user-images.githubusercontent.com/69609972/218312340-3f7a66e5-da87-4de7-aa94-333ca140bb78.png)
-![2nd_trial(2)](https://user-images.githubusercontent.com/69609972/218312341-51184e50-7d95-465d-9f85-3c81eab561e4.jpg)
-![2nd_trial(3)](https://user-images.githubusercontent.com/69609972/218312342-57e70fbb-e286-4e5b-a76a-563a0b7f8224.png)
+![2nd_trial(1)](https://user-images.githubusercontent.com/69609972/221759259-3c2a6dbb-5ac7-4205-824d-6bd84173e216.png)
+![2nd_trial(2)](https://user-images.githubusercontent.com/69609972/221759257-b68f486e-2282-496a-98b5-2018afc24bbb.png)
+![2nd_trial(3)](https://user-images.githubusercontent.com/69609972/221759248-54c9b7b0-9333-452a-82fd-bb739ead4177.png)
 
 ### Third  Trial
 ![3rd_trial](https://user-images.githubusercontent.com/69609972/218312343-69eaf0e0-0193-40d1-915c-fb09f97975cb.png)
