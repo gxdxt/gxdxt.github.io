@@ -25,6 +25,10 @@ regenerate: true
 * [[combine/api-with-combine]]
 * [[combine/convenience-publishers]]
 
+## [[animation]]
+
+* [[animation/the-render-loop]]
+
 ## [[convention]]
 
 * [[convention/tinowledge-convention]]
