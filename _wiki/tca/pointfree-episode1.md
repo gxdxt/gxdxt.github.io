@@ -3,11 +3,11 @@ layout  : wiki
 title   : Point-Free TCA ep.1
 summary : 
 date    : 2023-03-08 20:07:30 +0900
-updated : 2023-03-08 20:08:38 +0900
+updated : 2023-03-08 20:11:08 +0900
 tags    : tca
 toc     : true
 public  : true
-parent  : [[root-index/tca]]
+parent  : [[/tca]]
 latex   : false
 ---
 * TOC
