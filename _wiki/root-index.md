@@ -25,6 +25,10 @@ regenerate: true
 * [[combine/api-with-combine]]
 * [[combine/convenience-publishers]]
 
+## [[tca]]
+
+* [[tca/pointfree-episode1]]
+
 ## [[animation]]
 
 * [[animation/the-render-loop]]
