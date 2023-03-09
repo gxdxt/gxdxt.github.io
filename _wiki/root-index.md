@@ -28,6 +28,7 @@ regenerate: true
 ## [[tca]]
 
 * [[tca/pointfree-episode1]]
+* [[tca/pointfree-episode2]]
 
 ## [[animation]]
 
