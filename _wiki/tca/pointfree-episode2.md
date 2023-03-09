@@ -1,9 +1,9 @@
 ---
 layout  : wiki
-title   : TCA episode 2
+title   : Point-Free TCA ep.2
 summary : 
 date    : 2023-03-09 13:15:40 +0900
-updated : 2023-03-09 13:44:49 +0900
+updated : 2023-03-09 14:07:50 +0900
 tags    : 
 toc     : true
 public  : true
