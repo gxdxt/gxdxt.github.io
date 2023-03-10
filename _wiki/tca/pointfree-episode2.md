@@ -3,7 +3,7 @@ layout  : wiki
 title   : Point-Free TCA ep.2
 summary : 
 date    : 2023-03-09 13:15:40 +0900
-updated : 2023-03-09 14:07:50 +0900
+updated : 2023-03-10 11:00:39 +0900
 tags    : 
 toc     : true
 public  : true
@@ -17,6 +17,7 @@ latex   : false
 - Right now we’re doing a lot of index juggling. Let’s see what the Composable Architecture gives us to simplify that
 - Present
 	- handling those actions in the reducer we are going to repeatedly bind the `index` from the action and subscript into `state.todos`.
+
 ```swift
 enum AppAction {
   case todoCheckboxTapped(index: Int)
@@ -35,24 +36,29 @@ let appReducer = Reducer<AppState, AppAction, AppEnvironment> { state, action, _
   }
 }
 ```
+
 - With TCA
 - Action (TodoAction)
 	- we could write a reducer that focuses only on the domain of a single todo.
 		- Well, the Composable Architecture absolutely supports this use case, and it’s called the `forEach` operator. What we can do is define a new domain for just the todo row, starting with the actions that can be performed
+
 ```swift
 enum TodoAction {
   case checkboxTapped
   case textFieldChanged(String)
 }
 ```
+
 - Environment
 	- We also need an environment to hold all of this feature’s dependencies
+
 ```swift
 struct TodoEnvironment {}
 ```
 
 - Reducer (todoReducer)
 	- a reducer that operates on just a single todo and just with `TodoAction`s, which means we don’t have to do any index subscripting
+
 ```swift
 let todoReducer = Reducer<Todo, TodoAction, TodoEnvironment> { state, action, _ in
   switch action {
@@ -69,6 +75,7 @@ let todoReducer = Reducer<Todo, TodoAction, TodoEnvironment> { state, action, _ 
 
 - Action (AppAction)
 	- Next we adapt the app’s domain so that it works with a `TodoAction` at a particular index instead of spelling out each individual action
+
 ```swift
 enum AppAction {
   case todo(index: Int, action: TodoAction)
@@ -77,6 +84,7 @@ enum AppAction {
 
 - Reducer (appReducer)
 	- The core idea of this function is that it wants to transform the `todoReducer` that only knows about a small piece of domain, in particular a single todo, into a reducer that knows about a much more complicated domain, in particular a whole collection of todos.
+
 ```swift
 let appReducer = todoReducer.forEach(
   state: WritableKeyPath<GlobalState, MutableCollection>,
@@ -92,6 +100,7 @@ let appReducer = todoReducer.forEach(
 > : For state the transformation takes the form of a writable key path, because we want to be able to pluck out the collection from the global state, mutate any element in that collection, and then plug the whole collection back into the global state.
 
 - the `state` key path just needs to pluck out the `todos` field from the `AppState`
+
 ```swift
 todoReducer.forEach(
   state: \AppState.todos,
@@ -101,6 +110,7 @@ todoReducer.forEach(
 ```
 
 - an `action` case path that can extract out an index and todo action from the `AppAction`.
+
 ```swift
 todoReducer.forEach(
   state: \AppState.todos,
@@ -110,6 +120,7 @@ todoReducer.forEach(
 ```
 
 - transform the global environment into the todo environment.
+
 ```swift
 let appReducer: Reducer<AppState, AppAction, AppEnvironment> = todoReducer.indexed(
   state: \.todos,
