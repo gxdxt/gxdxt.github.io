@@ -3,7 +3,7 @@ layout  : wiki
 title   : Point-Free TCA ep.4
 summary : 
 date    : 2023-03-11 13:15:33 +0900
-updated : 2023-03-11 13:16:08 +0900
+updated : 2023-03-11 16:03:30 +0900
 tags    : 
 toc     : true
 public  : true
@@ -25,13 +25,13 @@ latex   : false
 
 ```swift
 store.assert(
-			.send(.todo(index: 0, action: .checkboxTapped)) {
-				(...)
-			},
-			.do {
-				// Do any imperative work
-			}
-		)
+	.send(.todo(index: 0, action: .checkboxTapped)) {
+		(...)
+	},
+	.do {
+		// Do any imperative work
+	}
+)
 ```
 
 ```swift
@@ -112,22 +112,22 @@ store.assert(
 
 ```swift
 store.assert(
-			.send(.todo(index: 0, action: .checkboxTapped)) {
-				$0.todos[0].isComplete = true
-			},
-			.do {
-				// Do any imperative work
-				_ = XCTWaiter.wait(for: [self.expectation(description: "wait")], timeout: 0.5)
-			},
-			.send(.todo(index: 0, action: .checkboxTapped)) {
-				$0.todos[0].isComplete = false
-			},
-			.do {
-				// Do any imperative work
-				_ = XCTWaiter.wait(for: [self.expectation(description: "wait")], timeout: 1)
-			},
-			.receive(.todoDelayCompleted)
-		)
+	.send(.todo(index: 0, action: .checkboxTapped)) {
+		$0.todos[0].isComplete = true
+	},
+	.do {
+		// Do any imperative work
+		_ = XCTWaiter.wait(for: [self.expectation(description: "wait")], timeout: 0.5)
+	},
+	.send(.todo(index: 0, action: .checkboxTapped)) {
+		$0.todos[0].isComplete = false
+	},
+	.do {
+		// Do any imperative work
+		_ = XCTWaiter.wait(for: [self.expectation(description: "wait")], timeout: 1)
+	},
+	.receive(.todoDelayCompleted)
+)
 ```
 
   
@@ -136,7 +136,7 @@ store.assert(
 - The combination of delaying an effect and cancelling inflight effects when starting a new one has a name that is well-known in the reactive programming communities: it’s called debounce.
 
 ```swift
-case .todo(index: _, action: .checkboxTapped):
+case .todo(index: \_, action: .checkboxTapped):
 	struct CancelDelayId: Hashable {}
 	return Effect(value: AppAction.todoDelayCompleted)
 		.delay(for: 1, scheduler: DispatchQueue.main)
@@ -147,7 +147,7 @@ case .todo(index: _, action: .checkboxTapped):
 - This code can be simplified in 1 line.
 
 ```swift
-case .todo(index: _, action: .checkboxTapped):
+case .todo(index: \_, action: .checkboxTapped):
 	struct CancelDelayId: Hashable {}
 	return Effect(value: AppAction.todoDelayCompleted)
 		.debounce(id: CancelDelayId(), for: 1, scheduler: DispatchQueue.main)
@@ -244,11 +244,13 @@ scheduler.schedule(after: scheduler.now.advanced(by: 1)) {
 ```
 
 - We can control the time like this:
+
 ```swift
 scheduler.advance(by: 1)
 ```
 
 - We can do it in Timer too
+
 ```swift
 scheduler.schedule(after: scheduler.now, interval: 1) {
   print("TestScheduler", "delayed")
@@ -302,13 +304,14 @@ var mainQueue: AnySchedulerOf<DispatchQueue>
 ```
 
 ```swift
-case .todo(index: _, action: .checkboxTapped):
+case .todo(index: \_, action: .checkboxTapped):
 	struct CancelDelayId: Hashable {}
 	return Effect(value: AppAction.todoDelayCompleted)
 		.debounce(id: CancelDelayId(), for: 1, scheduler: environment.mainQueue)
 ```
 
 - We need to match the type, so we use `.eraseToAnyScheduler()` in the real App
+
 ```swift
 environment: AppEnvironment(
 	mainQueue: DispatchQueue.main.eraseToAnyScheduler(),
@@ -317,6 +320,7 @@ environment: AppEnvironment(
 ```
 
 - We will use the different Scheduler in the Test Suite.
+
 ```swift
 environment: AppEnvironment(
 	mainQueue: DispatchQueue.testScheduler.eraseToAnyScheduler(),
@@ -327,6 +331,7 @@ environment: AppEnvironment(
 - But when we use `.eraseToAnyScheduler()`,  this erase all the info that we had that identified it as a `TestScheduler`.
 	- We don't have access to anything that allows us need to advance time on this test scheduler.
 - So we store this in our scheduler variable.
+
 ```swift
 let scheduler = DispatchQueue.testScheduler
 ```
