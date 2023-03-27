@@ -31,6 +31,8 @@ regenerate: true
 * [[tca/pointfree-episode2]]
 * [[tca/pointfree-episode3]]
 * [[tca/pointfree-episode4]]
+* [[tca/firebase-with-tca]]
+
 
 ## [[animation]]
 
