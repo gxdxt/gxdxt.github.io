@@ -16,6 +16,7 @@ latex   : false
 # TEIM
 ![TEIM](https://github.com/gxdxt/gxdxt.github.io/assets/69609972/81aa1c85-7f27-467b-a608-173e32842bb5)
 ***
+
 # 사용법
 
 ## 시간 설정 방법 
@@ -41,3 +42,5 @@ latex   : false
 
 ## 초기화 버튼 
 - 타이머를 초기화 합니다. 
+
+***
