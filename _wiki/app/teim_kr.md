@@ -3,7 +3,7 @@ layout  : wiki
 title   : teim 한국어 매뉴얼
 summary : 
 date    : 2024-04-20 21:49:01 +0900
-updated : 2024-04-19 121:49:0 +0900
+updated : 2024-04-20 21:49:01 +0900
 tags    : app
 toc     : true
 public  : true
