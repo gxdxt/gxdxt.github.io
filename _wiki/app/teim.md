@@ -21,19 +21,20 @@ latex   : false
 
 ## How to set the time
 
-## By the handle
+### By the handle
 
 - If you drag the handle above, you can set the time.
-
-## By the buttons
+![HandleDrag](https://github.com/gxdxt/gxdxt.github.io/assets/69609972/ae5a4297-0679-4934-93c5-48a15b06068)
+f
+### By the buttons
 
 - If you push the buttons, you can add the time.
 
-### +10 button
+#### +10 button
 
 - you can add 10 minutes.
 
-### +5 button
+#### +5 button
 
 - you can add 5 minutes.
 
