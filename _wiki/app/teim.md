@@ -19,5 +19,36 @@ latex   : false
 ***
 # How to Use
 
+## How to set the time
+
+## By the handle
+
+- If you drag the handle above, you can set the time.
+
+## By the buttons
+
+- If you push the buttons, you can add the time.
+
+### +10 button
+
+- you can add 10 minutes.
+
+### +5 button
+
+- you can add 5 minutes.
+
+## Start Button
+
+- start the timer with the set time.
+
+## Stop button
+
+- stop the timer.
+
+## Reset button
+
+- reset the timer.
+
+
 ***
 
