@@ -8,6 +8,7 @@ regenerate: true
 ---
 ## [[app]]
 
+* [[app/teim_kr]]
 * [[app/teim]]
 
 ## [[hig]]
