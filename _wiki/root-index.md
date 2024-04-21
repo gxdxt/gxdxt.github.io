@@ -10,6 +10,7 @@ regenerate: true
 
 * [[app/teim_kr]]
 * [[app/teim]]
+* [[app/teim_private_policy_kr]]
 * [[app/teim_private_policy]]
 
 ## [[hig]]
