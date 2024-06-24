@@ -10,12 +10,12 @@ public  : true
 parent  : [[/app]] 
 latex   : false
 ---
+
 * TOC
 {:toc}
 
 # Palette Timer Private Policy
-![Palette Timer](https://github.com/gxdxt/gxdxt.github.io/assets/69609972/81aa1c85-7f27-467b-a608-173e32842bb5)
-
+![match timer](https://github.com/gxdxt/gxdxt.github.io/assets/69609972/6004d7c4-fdb8-491e-8800-d33d442fe902)
 ***
 
 SeungTae YOU (hereinafter referred to as TAE) takes the privacy of his customers and users seriously. TAE recognizes that privacy is an important issue, so he designs and operates his services with the protection of your privacy in mind. This privacy policy explains what kind of information TAE collects, uses, and the security of your information in Palette Timer. By using Palette Timer, you consent to this privacy policy.
@@ -45,4 +45,5 @@ This privacy policy may change from time to time. If the developer decides to ch
 ---
 
 Please send any questions, comments, or other inquiries related to this privacy policy or Palette Timer from AppStore Review, TAE's X(@gxdxt). TAE will make every effort to resolve your concerns.
+
 
