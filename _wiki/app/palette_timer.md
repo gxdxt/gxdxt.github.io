@@ -14,8 +14,7 @@ latex   : false
 {:toc}
 
 # Palette Timer 
-![Palette Timer](https://github.com/gxdxt/gxdxt.github.io/assets/69609972/81aa1c85-7f27-467b-a608-173e32842bb5)
-
+![match timer](https://github.com/gxdxt/gxdxt.github.io/assets/69609972/6004d7c4-fdb8-491e-8800-d33d442fe902)
 
 # How to Use
 ## How to set the time
