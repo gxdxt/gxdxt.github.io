@@ -8,10 +8,11 @@ regenerate: true
 ---
 ## [[app]]
 
-* [[app/teim_kr]]
+* [[app/teim-kr]]
 * [[app/teim]]
-* [[app/teim_private_policy_kr]]
-* [[app/teim_private_policy]]
+* [[app/teim-private-policy-kr]]
+* [[app/teim-private-policy]]
+* [[app/palette-timer]]
 
 ## [[hig]]
 

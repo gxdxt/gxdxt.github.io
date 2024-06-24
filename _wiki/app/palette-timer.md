@@ -3,7 +3,7 @@ layout  : wiki
 title   : Palette Timer 
 summary : 
 date    : 2024-06-24 17:57:00 +0900
-updated : 2024-04-19 17:57:00 +0900
+updated : 2024-06-24 17:57:00 +0900
 tags    : app
 toc     : true
 public  : true
