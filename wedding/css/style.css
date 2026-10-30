@@ -1,0 +1,329 @@
+@charset "UTF-8";
+
+/* ==========================================================================
+   1. Design Variables & Global Reset
+   ========================================================================== */
+:root {
+  --bg-color: #87B4F8;        /* 전체 배경 미색 */
+  --card-bg: #ffffff;         /* 모바일 카드 배경 흰색 */
+  --text-main: #2b2b2b;       /* 본문 메인 텍스트 */
+  --text-sub: #6f6b64;        /* 보조 안내 텍스트 */
+  --point-color: #8c7355;     /* 따뜻한 골드브라운 포인트 */
+  --point-light: #f5f0ea;     /* 연한 포인트 배경 */
+  --border-color: #eee7de;    /* 구분선 */
+  --shadow-color: rgba(0, 0, 0, 0.04);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  display: flex;
+  justify-content: center;
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden; /* 가로 스크롤 방지 */
+}
+
+/* ==========================================================================
+   2. Main Layout (Mobile Frame)
+   ========================================================================== */
+.container {
+  width: 100%;
+  max-width: 440px;
+  background-color: var(--card-bg);
+  min-height: 100vh;
+  box-shadow: 0 0 30px var(--shadow-color);
+  padding-bottom: 70px;
+  position: relative;
+}
+
+.section {
+  padding: 56px 24px;
+  text-align: center;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.section.no-border {
+  border-bottom: none;
+}
+
+.section-title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 13px;
+  letter-spacing: 4px;
+  color: var(--point-color);
+  margin-bottom: 24px;
+  text-transform: uppercase;
+}
+
+/* ==========================================================================
+   3. Hero Section (상단 메인 비주얼)
+   ========================================================================== */
+.hero-section {
+  text-align: center;
+  padding: 48px 0 36px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.hero-date {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 13px;
+  letter-spacing: 3px;
+  color: var(--point-color);
+  margin-bottom: 14px;
+}
+
+.hero-names {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 23px;
+  font-weight: 500;
+  letter-spacing: 4px;
+  margin-bottom: 28px;
+}
+
+.hero-image-wrap {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /*background-color: #eee8dc;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);*/
+}
+
+.hero-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* ==========================================================================
+   4. Invitation & Greeting (모시는 글)
+   ========================================================================== */
+.invitation-text {
+  font-size: 15px;
+  line-height: 2.1;
+  color: #4a4640;
+  margin-bottom: 36px;
+}
+
+.family-relation {
+  font-size: 14px;
+  line-height: 2;
+  color: var(--text-sub);
+}
+
+.family-relation strong {
+  color: var(--text-main);
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+/* ==========================================================================
+   5. Location & Map (오시는 길)
+   ========================================================================== */
+.hall-name {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.hall-address {
+  font-size: 14px;
+  color: var(--text-sub);
+  margin-bottom: 24px;
+}
+
+.map-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.btn-map {
+  flex: 1;
+  padding: 12px 0;
+  background-color: #ffffff;
+  border: 1px solid #ddd6cc;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #4a4640;
+  text-decoration: none;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.btn-map:active {
+  background-color: var(--point-light);
+  border-color: var(--point-color);
+}
+
+/* ==========================================================================
+   6. Account (마음 전하실 곳)
+   ========================================================================== */
+/* ==========================================================================
+   6. Account Accordion (계좌 아코디언)
+   ========================================================================== */
+.accordion-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: left;
+}
+
+.accordion-item {
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  background-color: var(--card-bg);
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+  transition: border-color 0.25s ease;
+}
+
+.accordion-item.active {
+  border-color: var(--point-color);
+}
+
+.accordion-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  background-color: var(--bg-color);
+  border: none;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-main);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.accordion-header:active {
+  background-color: var(--point-light);
+}
+
+/* 화살표 아이콘 */
+.arrow-icon {
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid var(--text-sub);
+  border-bottom: 2px solid var(--text-sub);
+  transform: rotate(45deg);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-right: 4px;
+}
+
+.accordion-item.active .arrow-icon {
+  transform: rotate(-135deg);
+  border-color: var(--point-color);
+}
+
+/* 아코디언 펼침/접힘 바디 */
+.accordion-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  background-color: #ffffff;
+}
+
+/* 계좌 항목 행 */
+.account-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 20px;
+  border-top: 1px solid var(--border-color);
+}
+
+.account-row:first-child {
+  border-top: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.account-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.account-info .role {
+  font-size: 11px;
+  color: var(--point-color);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.account-info .name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.account-info .bank-num {
+  font-size: 13px;
+  color: var(--text-sub);
+  letter-spacing: -0.2px;
+}
+
+.copy-btn {
+  background-color: #ffffff;
+  color: #666666;
+  border: 1px solid #e2ddd5;
+  padding: 6px 12px;
+  border-radius: 20px; /* 둥근 알약 모양 */
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: -0.2px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.copy-btn:active {
+  background-color: #f7f5f2;
+  border-color: #cbbfb0;
+  color: var(--point-color);
+}
+
+/* ==========================================================================
+   7. Toast Notification (알림 팝업)
+   ========================================================================== */
+#toast {
+  visibility: hidden;
+  min-width: 200px;
+  background-color: rgba(30, 30, 30, 0.85);
+  color: #ffffff;
+  text-align: center;
+  border-radius: 30px;
+  padding: 11px 20px;
+  position: fixed;
+  z-index: 1000;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  transition: opacity 0.3s ease, bottom 0.3s ease;
+}
+
+#toast.show {
+  visibility: visible;
+  opacity: 1;
+  bottom: 50px;
+}
+
+

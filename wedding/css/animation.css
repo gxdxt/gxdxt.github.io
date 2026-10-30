@@ -1,0 +1,116 @@
+@charset "UTF-8";
+
+/* ==========================================================================
+   Floating Deco: Base Setup
+   ========================================================================== */
+.floating-deco {
+  position: fixed;
+  z-index: 40;
+  pointer-events: none; /* 클릭 및 스크롤 터치 통과 */
+  user-select: none;
+  -webkit-user-drag: none;
+  will-change: transform;
+}
+
+.floating-deco img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.06));
+}
+
+/* ==========================================================================
+   Desktop / Tablet Positions (컨테이너 max-width 440px 좌우 바깥)
+   ========================================================================== */
+/* 좌측 상단 오브젝트 */
+.deco-left-1 {
+  top: 14%;
+  left: calc(50% - 310px);
+  width: 76px;
+  animation: floatSway1 4.5s ease-in-out infinite alternate;
+}
+
+/* 좌측 하단 오브젝트 */
+.deco-left-2 {
+  top: 62%;
+  left: calc(50% - 300px);
+  width: 68px;
+  animation: floatSway2 5.6s ease-in-out infinite alternate;
+}
+
+/* 우측 상단 오브젝트 */
+.deco-right-1 {
+  top: 22%;
+  right: calc(50% - 305px);
+  width: 72px;
+  animation: floatSway2 4.8s ease-in-out infinite alternate-reverse;
+}
+
+/* 우측 하단 오브젝트 */
+.deco-right-2 {
+  top: 72%;
+  right: calc(50% - 315px);
+  width: 82px;
+  animation: floatSway1 6.2s ease-in-out infinite alternate-reverse;
+}
+
+/* ==========================================================================
+   Keyframe Animations: 자연스러운 부유 및 흔들림 모션
+   ========================================================================== */
+@keyframes floatSway1 {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(-5deg);
+  }
+  50% {
+    transform: translate3d(4px, -14px, 0) rotate(3deg);
+  }
+  100% {
+    transform: translate3d(-3px, 6px, 0) rotate(-7deg);
+  }
+}
+
+@keyframes floatSway2 {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(4deg);
+  }
+  50% {
+    transform: translate3d(-6px, -18px, 0) rotate(-4deg);
+  }
+  100% {
+    transform: translate3d(5px, 8px, 0) rotate(6deg);
+  }
+}
+
+/* ==========================================================================
+   Mobile Responsive (화면 폭 640px 이하 모바일 환경)
+   모바일 화면에서는 본문 가장자리에 살짝 걸쳐 자연스럽게 연출
+   ========================================================================== */
+@media (max-width: 640px) {
+  .deco-left-1 {
+    left: -14px;
+    top: 10%;
+    width: 48px;
+    opacity: 0.75;
+  }
+
+  .deco-left-2 {
+    left: -12px;
+    top: 58%;
+    width: 44px;
+    opacity: 0.75;
+  }
+
+  .deco-right-1 {
+    right: -12px;
+    top: 24%;
+    width: 46px;
+    opacity: 0.75;
+  }
+
+  .deco-right-2 {
+    right: -16px;
+    top: 68%;
+    width: 52px;
+    opacity: 0.75;
+  }
+}

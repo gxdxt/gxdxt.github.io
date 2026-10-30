@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<script src="./js/main.js?v=2"></script>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>먼지 & 알지의 모바일 청첩장</title>
+
+  <!-- 카카오톡 / SNS 공유 미리보기 (오픈그래프) -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="먼지 & 알지 결혼합니다">
+  <meta property="og:description" content="2027년 1월 23일 토요일 오전 11시 20분">
+  <meta property="og:image" content="./images/opst2.png">
+
+  <!-- 웹폰트: Pretendard(고딕) & Noto Serif KR(명조) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- 분리된 스타일시트 -->
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/animation.css">
+</head>
+<body>
+
+  <!-- ==========================================
+       양 사이드 반응형 흔들림 장식 오브젝트 4개
+       ========================================== -->
+  <div class="floating-deco deco-left-1">
+    <img src="./images/pockey.png" alt="youpockey">
+  </div>
+  <div class="floating-deco deco-left-2">
+    <img src="./images/merccitae.png" alt="merccitae">
+  </div>
+  <div class="floating-deco deco-right-1">
+    <img src="./images/curlyrg.png" alt="curlyrg">
+  </div>
+  <div class="floating-deco deco-right-2">
+    <img src="./images/seoktan.png" alt="leeseoktan">
+  </div>
+
+  <!-- ==========================================
+       모바일 청첩장 본문 컨테이너
+       ========================================== -->
+  <div class="container">
+    
+    <!-- 메인 커버 -->
+    <section class="hero-section">
+      <div class="hero-date">2027. O1. 23 SAT AM 11:20</div>
+      <div class="hero-names">먼지 & 알지</div>
+      <div class="hero-image-wrap">
+        <img src="./images/opst2.png" alt="메인 웨딩 사진">
+      </div>
+    </section>
+
+    <!-- 모시는 글 -->
+    <section class="section">
+      <div class="section-title">Invitation</div>
+      <p class="invitation-text">
+        서로 마주보며 다져온 사랑을<br>
+        이제 함께 한 곳을 바라보며 걸어가고자 합니다.<br><br>
+        저희 두 사람의 새로운 출발에<br>
+        따뜻한 축복을 보내주시면 감사하겠습니다.
+      </p>
+      
+      <div class="family-relation">
+        <p><strong>홍길동 · 김영희</strong>의 장남 <strong>홍신랑</strong></p>
+        <p><strong>이철수 · 박순자</strong>의 장녀 <strong>이신부</strong></p>
+      </div>
+    </section>
+
+    <!-- 오시는 길 -->
+    <section class="section">
+      <div class="section-title">Location</div>
+      <p class="hall-name">OO웨딩홀 그랜드볼룸 2층</p>
+      <p class="hall-address">서울특별시 강남구 테헤란로 123</p>
+
+      <div class="map-buttons">
+        <a href="https://map.kakao.com/link/to/OO웨딩홀,37.5112,127.0594" target="_blank" rel="noopener noreferrer" class="btn-map">카카오맵</a>
+        <a href="https://map.naver.com/" target="_blank" rel="noopener noreferrer" class="btn-map">네이버 지도</a>
+        <a href="tmap://route?goalname=OO웨딩홀&goaly=37.5112&goalx=127.0594" class="btn-map">티맵</a>
+      </div>
+    </section>
+
+    <!-- 마음 전하실 곳 (축의금 계좌) -->
+<!-- 마음 전하실 곳 (축의금 계좌 아코디언) -->
+    <section class="section no-border">
+      <div class="section-title">Account</div>
+      <p style="font-size: 14px; color: var(--text-sub); margin-bottom: 24px;">
+        축복의 마음을 전하고 싶으신 분들을 위해<br>계좌번호를 안내해 드립니다.
+      </p>
+
+      <div class="accordion-wrap">
+        <!-- 1. 신랑측 드롭다운 -->
+        <div class="accordion-item">
+          <button type="button" class="accordion-header" onclick="toggleAccordion(this)">
+            <span>신랑측에게</span>
+            <span class="arrow-icon"></span>
+          </button>
+          <div class="accordion-body">
+            <div class="account-row">
+              <div class="account-info">
+                <span class="role">아버지</span>
+                <span class="name">홍판서</span>
+                <span class="bank-num">국민은행 111-22-333333</span>
+              </div>
+              <button type="button" class="copy-btn" onclick="copyAccount('11122333333')">복사</button>
+            </div>
+
+            <div class="account-row">
+              <div class="account-info">
+                <span class="role">어머니</span>
+                <span class="name">김영희</span>
+                <span class="bank-num">농협 222-33-444444</span>
+              </div>
+              <button type="button" class="copy-btn" onclick="copyAccount('22233444444')">복사</button>
+            </div>
+
+            <div class="account-row">
+              <div class="account-info">
+                <span class="role">신랑</span>
+                <span class="name">홍신랑</span>
+                <span class="bank-num">카카오뱅크 3333-01-555555</span>
+              </div>
+              <button type="button" class="copy-btn" onclick="copyAccount('333301555555')">복사</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. 신부측 드롭다운 -->
+        <div class="accordion-item">
+          <button type="button" class="accordion-header" onclick="toggleAccordion(this)">
+            <span>신부측에게</span>
+            <span class="arrow-icon"></span>
+          </button>
+          <div class="accordion-body">
+            <div class="account-row">
+              <div class="account-info">
+                <span class="role">아버지</span>
+                <span class="name">이철수</span>
+                <span class="bank-num">신한은행 444-55-666666</span>
+              </div>
+              <button type="button" class="copy-btn" onclick="copyAccount('44455666666')">복사</button>
+            </div>
+
+            <div class="account-row">
+              <div class="account-info">
+                <span class="role">어머니</span>
+                <span class="name">박순자</span>
+                <span class="bank-num">우리은행 555-66-777777</span>
+              </div>
+              <button type="button" class="copy-btn" onclick="copyAccount('55566777777')">복사</button>
+            </div>
+
+            <div class="account-row">
+              <div class="account-info">
+                <span class="role">신부</span>
+                <span class="name">이신부</span>
+                <span class="bank-num">토스뱅크 1000-01-888888</span>
+              </div>
+              <button type="button" class="copy-btn" onclick="copyAccount('100001888888')">복사</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section> 
+  </div>
+
+  <!-- 토스트 팝업 레이어 -->
+  <div id="toast">계좌번호가 복사되었습니다.</div>
+
+  <!-- 분리된 자바스크립트 -->
+  <script src="./js/main.js"></script>
+</body>
+</html>
