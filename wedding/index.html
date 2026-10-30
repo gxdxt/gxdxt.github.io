@@ -1,6 +1,4 @@
 <!DOCTYPE html>
-<!-- 분리된 자바스크립트 -->
-<script src="./js/main.js?v=20261030"></script>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
@@ -83,7 +81,81 @@
         <p><strong>이철수 · 박순자</strong>의 장녀 <strong>이신부</strong></p>
       </div>
     </section>
+<!-- ==========================================
+         Calendar & D-Day Section
+         ========================================== -->
+    <section class="section">
+      <div class="section-title">Calendar</div>
+      <div class="calendar-header">
+        <span class="cal-year">2027</span>
+        <span class="cal-month">1월 23일 토요일</span>
+        <span class="cal-time">오전 11시 20분</span>
+      </div>
 
+      <div class="calendar-card">
+        <div class="cal-weekdays">
+          <span class="sun">일</span>
+          <span>월</span>
+          <span>화</span>
+          <span>수</span>
+          <span>목</span>
+          <span>금</span>
+          <span class="sat">토</span>
+        </div>
+
+        <!-- 2027년 1월: 1일 금요일 시작 (앞 빈칸 5개) -->
+        <div class="cal-grid">
+          <!-- 일, 월, 화, 수, 목 빈칸 -->
+          <span class="cal-day empty"></span>
+          <span class="cal-day empty"></span>
+          <span class="cal-day empty"></span>
+          <span class="cal-day empty"></span>
+          <span class="cal-day empty"></span>
+
+          <!-- 1 ~ 31일 -->
+          <span class="cal-day">1</span>
+          <span class="cal-day sat">2</span>
+          <span class="cal-day sun">3</span>
+          <span class="cal-day">4</span>
+          <span class="cal-day">5</span>
+          <span class="cal-day">6</span>
+          <span class="cal-day">7</span>
+          <span class="cal-day">8</span>
+          <span class="cal-day sat">9</span>
+          <span class="cal-day sun">10</span>
+          <span class="cal-day">11</span>
+          <span class="cal-day">12</span>
+          <span class="cal-day">13</span>
+          <span class="cal-day">14</span>
+          <span class="cal-day">15</span>
+          <span class="cal-day sat">16</span>
+          <span class="cal-day sun">17</span>
+          <span class="cal-day">18</span>
+          <span class="cal-day">19</span>
+          <span class="cal-day">20</span>
+          <span class="cal-day">21</span>
+          <span class="cal-day">22</span>
+          <!-- D-Day 23일 포인트 (토요일) -->
+          <span class="cal-day target-day sat">
+            <span class="day-num">23</span>
+            <span class="heart-dot">♥</span>
+          </span>
+          <span class="cal-day sun">24</span>
+          <span class="cal-day">25</span>
+          <span class="cal-day">26</span>
+          <span class="cal-day">27</span>
+          <span class="cal-day">28</span>
+          <span class="cal-day">29</span>
+          <span class="cal-day sat">30</span>
+          <span class="cal-day sun">31</span>
+        </div>
+      </div>
+
+      <!-- D-Day 배너 -->
+      <div class="dday-banner" id="ddayBanner">
+        예식일까지 <span class="dday-highlight" id="ddayCount">-</span>일 남았습니다.
+      </div>
+    </section>
     <!-- 오시는 길 -->
     <section class="section">
       <div class="section-title">Location</div>
@@ -210,5 +282,9 @@
 
   <!-- 토스트 팝업 레이어 -->
   <div id="toast">계좌번호가 복사되었습니다.</div>
+<!-- 분리된 자바스크립트 -->
+<script src="./js/main.js?v=6"></script>
+
 </body>
 </html>
+

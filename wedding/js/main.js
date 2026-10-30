@@ -1,3 +1,4 @@
+console.log("🔥 main.js 파일 맨 윗줄 로드됨!");
 /* ==========================================================================
    Gallery & Modal Carousel Logic
    ========================================================================== */
@@ -109,25 +110,25 @@ function handleSwipe() {
 var isPlaying = false;
 
 // 1. 오디오 기본 상태 로깅
+// 기존 코드:
+// if (!bgm) { ... }  <-- 여기서 bgm 변수가 선언되지 않아 죽음
+
+// 수정 코드:
+var bgm = document.getElementById("bgmAudio");
+
 if (!bgm) {
   console.error("❌ [BGM] #bgmAudio 태그를 찾지 못했습니다.");
 } else {
   console.log("🔍 [BGM] 오디오 태그 감지 완료. 현재 경로:", bgm.currentSrc || bgm.querySelector('source')?.src);
   
-  // 에러 발생 이벤트 감지 (경로 불일치, 404, 디코딩 실패 등)
   bgm.addEventListener("error", function(e) {
     console.error("❌ [BGM 에러 이벤트 발생]:", bgm.error);
-    if (bgm.error) {
-      console.error("코드:", bgm.error.code, "(1: 중단, 2: 네트워크, 3: 디코딩오류, 4: 파일없음/형식지원불가)");
-    }
   });
 
-  // 로딩 완료 감지
   bgm.addEventListener("canplay", function() {
     console.log("✅ [BGM] canplay - 오디오 재생 준비 완료");
   });
 }
-
 function toggleBgm() {
   console.log("🔘 [BGM] 버튼 클릭됨. 현재 isPlaying 상태:", isPlaying);
 var bgm = document.getElementById("bgmAudio");
@@ -216,7 +217,46 @@ document.addEventListener("DOMContentLoaded", function() {
   document.addEventListener("scroll", handleFirstInteraction, { passive: true });
 });
 
+// ==========================================================================
+// D-Day Counter (2027년 1월 23일 11:20 기준)
+// ==========================================================================
+function updateDday() {
+  var ddayEl = document.getElementById("ddayCount");
+  var bannerEl = document.getElementById("ddayBanner");
+
+  if (!ddayEl || !bannerEl) {
+    return;
+  }
+
+  // 2027년 1월 23일 11:20
+  var targetDate = new Date(2027, 0, 23, 11, 20, 0);
+  var now = new Date();
+
+  // 날짜 단위(자정 기준) 계산
+  var targetMidnight = new Date(targetDate.getFullYear(), targetDate.getMonth(), targetDate.getDate());
+  var todayMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+
+  var diffTime = targetMidnight - todayMidnight;
+  var diffDays = Math.round(diffTime / (1000 * 60 * 60 * 24));
+
+
+  if (diffDays > 0) {
+    ddayEl.textContent = diffDays;
+  } else if (diffDays === 0) {
+    bannerEl.innerHTML = "축복의 날, <span class='dday-highlight'>오늘</span>입니다 ♥";
+  } else {
+    bannerEl.innerHTML = "소중한 축복 속에 <span class='dday-highlight'>예식</span>을 마쳤습니다 ♥";
+  }
+}
+
+
 // 초기 실행
 document.addEventListener("DOMContentLoaded", () => {
   renderGallery();
 });
+
+// DOM 완료 후 실행
+window.addEventListener("load", function() {
+    updateDday();
+});
+
