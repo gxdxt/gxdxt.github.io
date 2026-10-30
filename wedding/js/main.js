@@ -103,6 +103,65 @@ function handleSwipe() {
     else nextSlide();
   }
 }
+// ==========================================================================
+// BGM Controller (디버그 콘솔 강화 버전)
+// ==========================================================================
+var isPlaying = false;
+
+// 1. 오디오 기본 상태 로깅
+if (!bgm) {
+  console.error("❌ [BGM] #bgmAudio 태그를 찾지 못했습니다.");
+} else {
+  console.log("🔍 [BGM] 오디오 태그 감지 완료. 현재 경로:", bgm.currentSrc || bgm.querySelector('source')?.src);
+  
+  // 에러 발생 이벤트 감지 (경로 불일치, 404, 디코딩 실패 등)
+  bgm.addEventListener("error", function(e) {
+    console.error("❌ [BGM 에러 이벤트 발생]:", bgm.error);
+    if (bgm.error) {
+      console.error("코드:", bgm.error.code, "(1: 중단, 2: 네트워크, 3: 디코딩오류, 4: 파일없음/형식지원불가)");
+    }
+  });
+
+  // 로딩 완료 감지
+  bgm.addEventListener("canplay", function() {
+    console.log("✅ [BGM] canplay - 오디오 재생 준비 완료");
+  });
+}
+
+function toggleBgm() {
+  console.log("🔘 [BGM] 버튼 클릭됨. 현재 isPlaying 상태:", isPlaying);
+var bgm = document.getElementById("bgmAudio");
+var bgmBtn = document.getElementById("bgmBtn");
+
+  if (!bgm) {
+    console.error("❌ [BGM] bgm 객체가 없습니다.");
+    return;
+  }
+
+  if (isPlaying) {
+    bgm.pause();
+    if (bgmBtn) bgmBtn.classList.remove("playing");
+    isPlaying = false;
+    console.log("⏸️ [BGM] 일시정지 완료");
+  } else {
+    bgm.volume = 1.0;
+    console.log("▶️ [BGM] play() 호출 시도...");
+
+    var playPromise = bgm.play();
+
+    if (playPromise !== undefined) {
+      playPromise
+        .then(function() {
+          console.log("🎶 [BGM] 재생 성공! 정상 출력 중");
+          if (bgmBtn) bgmBtn.classList.add("playing");
+          isPlaying = true;
+        })
+        .catch(function(err) {
+          console.error("🚨 [BGM] play() 거부/실패:", err.name, err.message);
+        });
+    }
+  }
+}
 
 // 초기 실행
 document.addEventListener("DOMContentLoaded", () => {

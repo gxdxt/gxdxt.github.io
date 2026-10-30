@@ -24,8 +24,21 @@
   <link rel="stylesheet" href="./css/animation.css">
 </head>
 <body>
+<!-- BGM 오디오 객체 -->
+<audio id="bgmAudio" loop preload="metadata">
+  <source src="./music/bgm.mp3" type="audio/mpeg">
+</audio>
+<!-- 우측 상단 고정 BGM 컨트롤 버튼 -->
+<button type="button" id="bgmBtn" class="bgm-btn" onclick="toggleBgm()" aria-label="배경음악 재생/정지">
+  <div class="eq-bars">
+    <span class="bar bar-1"></span>
+    <span class="bar bar-2"></span>
+    <span class="bar bar-3"></span>
+    <span class="bar bar-4"></span>
+  </div>
+</button>
 
-  <!-- ==========================================
+<!-- ==========================================
        양 사이드 반응형 흔들림 장식 오브젝트 4개
        ========================================== -->
   <div class="floating-deco deco-left-1">
