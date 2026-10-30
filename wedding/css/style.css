@@ -509,25 +509,64 @@ body {
 .eq-bars .bar-3 { height: 5px; }
 .eq-bars .bar-4 { height: 3px; }
 
-/* 재생 중(.playing)일 때의 동작: 포인트 컬러로 바뀌며 위아래로 바운스 */
-.bgm-btn.playing .eq-bars .bar {
-  background-color: var(--point-color);
-  animation: eqBounce 1.2s ease-in-out infinite alternate;
+/* 재생 중(.playing)일 때: 4개 바가 높이 + 색상을 제각각 전환 */
+.bgm-btn.playing .bar-1 {
+  animation: eqPlay1 0.85s ease-in-out infinite alternate;
+}
+.bgm-btn.playing .bar-2 {
+  animation: eqPlay2 1.15s ease-in-out infinite alternate;
+}
+.bgm-btn.playing .bar-3 {
+  animation: eqPlay3 0.7s ease-in-out infinite alternate;
+}
+.bgm-btn.playing .bar-4 {
+  animation: eqPlay4 0.95s ease-in-out infinite alternate;
 }
 
-.bgm-btn.playing .bar-1 { animation-delay: 0.1s; }
-.bgm-btn.playing .bar-2 { animation-delay: 0.4s; }
-.bgm-btn.playing .bar-3 { animation-delay: 0.2s; }
-.bgm-btn.playing .bar-4 { animation-delay: 0.5s; }
-
-@keyframes eqBounce {
+/* 1번 바: 브라운 웜톤 -> 부드러운 살구 코랄 */
+@keyframes eqPlay1 {
   0% {
     height: 3px;
-  }
-  50% {
-    height: 13px;
+    background-color: var(--point-color); /* 기준 브라운 베이지 */
   }
   100% {
-    height: 6px;
+    height: 14px;
+    background-color: #e09477; /* 코랄 피치 */
+  }
+}
+
+/* 2번 바: 소프트 로즈 -> 샴페인 골드 */
+@keyframes eqPlay2 {
+  0% {
+    height: 5px;
+    background-color: #d19a9a; /* 로즈 */
+  }
+  100% {
+    height: 10px;
+    background-color: #dfba73; /* 샴페인 골드 */
+  }
+}
+
+/* 3번 바: 로맨틱 핑크 -> 딥 웜브라운 (가장 역동적) */
+@keyframes eqPlay3 {
+  0% {
+    height: 4px;
+    background-color: #e28d9c; /* 소프트 핑크 */
+  }
+  100% {
+    height: 16px;
+    background-color: #8c6e54; /* 딥 브라운 */
+  }
+}
+
+/* 4번 바: 골드 베이지 -> 테라코타 */
+@keyframes eqPlay4 {
+  0% {
+    height: 2px;
+    background-color: #d4a373; /* 골드 베이지 */
+  }
+  100% {
+    height: 11px;
+    background-color: #c97a63; /* 테라코타 */
   }
 }

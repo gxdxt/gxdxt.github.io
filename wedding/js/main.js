@@ -163,6 +163,59 @@ var bgmBtn = document.getElementById("bgmBtn");
   }
 }
 
+// ==========================================================================
+// 첫 터치/클릭 시 자동 재생 & 초기화
+// ==========================================================================
+document.addEventListener("DOMContentLoaded", function() {
+  renderGallery();
+
+  // 1. 모바일 터치 스와이프 지원 (모달)
+  var modalArea = document.getElementById("galleryModal");
+  if (modalArea) {
+    modalArea.addEventListener("touchstart", function(e) {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    modalArea.addEventListener("touchend", function(e) {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    }, { passive: true });
+  }
+
+  // 2. 화면 첫 터치/클릭 시 BGM 자동 재생 (1회성)
+  function handleFirstInteraction() {
+    var bgm = document.getElementById("bgmAudio");
+    var bgmBtn = document.getElementById("bgmBtn");
+
+    if (bgm && !isPlaying) {
+      bgm.volume = 1.0;
+      var playPromise = bgm.play();
+
+      if (playPromise !== undefined) {
+        playPromise
+          .then(function() {
+            if (bgmBtn) bgmBtn.classList.add("playing");
+            isPlaying = true;
+            console.log("🎶 첫 인터랙션 감지: BGM 자동 재생 시작");
+          })
+          .catch(function(err) {
+            console.log("브라우저 자동재생 제약 유지:", err.message);
+          });
+      }
+    }
+
+    // 재생 시도 후 터치 이벤트 리스너 제거 (중복 실행 방지)
+    document.removeEventListener("touchstart", handleFirstInteraction);
+    document.removeEventListener("click", handleFirstInteraction);
+    document.removeEventListener("scroll", handleFirstInteraction);
+  }
+
+  // 화면 터치, 클릭, 스크롤 감지 (once 옵션 부여)
+  document.addEventListener("touchstart", handleFirstInteraction, { passive: true });
+  document.addEventListener("click", handleFirstInteraction, { passive: true });
+  document.addEventListener("scroll", handleFirstInteraction, { passive: true });
+});
+
 // 초기 실행
 document.addEventListener("DOMContentLoaded", () => {
   renderGallery();
