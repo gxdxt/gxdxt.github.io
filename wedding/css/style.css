@@ -845,3 +845,202 @@ body {
   font-weight: 700;
   font-size: 15px;
 }
+
+/* ==========================================
+   폴라로이드 프레임 스타일
+========================================== */
+/* 부모 컨테이너 */
+.hero-image-wrap {
+  position: relative !important;
+  display: block !important;          /* flex 충돌 방지: 가장 안전한 block 처리 */
+  width: calc(100% - 40px);           /* 좌우 여백 확보 */
+  max-width: 360px;
+  height: auto !important;            /* [중요] 높이 강제 제한 해제 */
+  max-height: none !important;
+  overflow: visible !important;       /* [핵심] 잘림 방지: 밖으로 나가는 요소도 모두 표시 */
+  margin: 40px auto 30px auto;       /* 상단 테이프와 회전 공간을 위해 상단 마진 넉넉히 확보 */
+  box-sizing: border-box !important;
+
+  /* 폴라로이드 종이 프레임 */
+  background-color: #ffffff;
+  padding: 14px 14px 20px 14px;      /* 상/좌/우 14px, 하단 20px */
+  border-radius: 2px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+
+  /* 미세 회전 (상위 요소에서 잘리면 rotate(0deg)로 테스트) */
+  transform: rotate(-1.5deg);
+  transition: transform 0.3s ease;
+}
+
+/* 이미지: 원본 비율 절대 유지 & 잘림 방지 */
+.hero-image-wrap img {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;            /* 원본 세로 비율 유지 */
+  max-height: none !important;        /* 상한선 해제 */
+  aspect-ratio: auto !important;      /* 고정 비율 강제 해제 */
+  object-fit: visible !important;     /* 크롭 해제 */
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-sizing: border-box;
+}
+
+/* 캡션: 텍스트 강제 노출 */
+.polaroid-caption {
+  display: block !important;          /* 숨김 방지 */
+  position: static !important;        /* 사진 바로 아래 자연스러운 흐름 */
+  visibility: visible !important;
+  opacity: 1 !important;
+  width: 100%;
+  margin: 16px 0 0 0 !important;
+  padding: 0 !important;
+  text-align: center;
+  font-size: 13px;
+  line-height: 1.4;
+  letter-spacing: 1px;
+  color: #555555;
+  font-family: 'Courier New', monospace, sans-serif;
+}
+
+/* 상단 리얼 마스킹 테이프 효과 */
+.hero-image-wrap::before {
+  content: "";
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  /* 폴라로이드 회전(-1.5deg)과 반대 방향(1.5deg)으로 살짝 틀어 자연스럽게 연출 */
+  transform: translateX(-50%) rotate(1.5deg);
+  width: 110px;
+  height: 32px;
+
+  /* 1. 반투명 미색 크라프트 테이프 질감 + 중앙 주름 하이라이트 */
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.6) 0%,
+    rgba(247, 243, 233, 0.75) 40%,
+    rgba(238, 232, 218, 0.7) 100%
+  );
+
+  /* 2. [핵심] 가위나 손으로 찢은 듯한 지그재그 양 끝 단면 */
+  clip-path: polygon(
+    0% 0%,
+    100% 0%,
+    97% 20%,
+    100% 40%,
+    97% 60%,
+    100% 80%,
+    98% 100%,
+    0% 100%,
+    2% 80%,
+    0% 60%,
+    3% 40%,
+    0% 20%
+  );
+
+  /* 3. 테이프 투과 블러 및 입체 그림자 */
+  backdrop-filter: blur(2.5px);
+  -webkit-backdrop-filter: blur(2.5px);
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.12));
+
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* ==========================================
+   검은 배경 무조건 사라지게 만드는 완전 통합 CSS
+========================================== */
+
+/* 1. 어두운 배경 오버레이 (CSS 애니메이션으로 자동 페이드아웃) */
+.intro-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 9998;
+  pointer-events: none; /* 클릭/터치 방해 절대 없음 */
+
+  /* 3.0초까지 어두웠다가 3.0초~3.8초 사이에 사라지고 화면에서 꺼짐 */
+  animation: fadeOutOverlay 3.8s forwards;
+}
+
+@keyframes fadeOutOverlay {
+  0%, 75% {
+    opacity: 1;
+    visibility: visible;
+  }
+  95% {
+    opacity: 0;
+    visibility: visible;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden; /* 완전히 지워져서 본문 터치 가능 */
+  }
+}
+
+/* 2. 밖에서 걸어오는 GIF (액자 크기와 동일하게 고정) */
+.walking-outside-gif {
+  position: fixed;
+  z-index: 9999;
+  width: calc(100% - 68px);
+  max-width: 300px;
+  height: auto;
+  pointer-events: none;
+
+  top: 35%;
+  left: 0;
+  transform: translate(-100%, -50%);
+  opacity: 0;
+}
+
+.walking-outside-gif.start-walk {
+  animation: walkFromOutside 3.0s linear forwards;
+}
+
+@keyframes walkFromOutside {
+  0% {
+    left: 0%;
+    transform: translate(-100%, -50%);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    left: 50%;
+    top: 35%;
+    transform: translate(-50%, -50%);
+    opacity: 1;
+  }
+  100% {
+    left: 50%;
+    top: 35%;
+    transform: translate(-50%, -50%);
+    opacity: 0; /* 액자 안착 순간 바깥 GIF 사라짐 */
+  }
+}
+
+/* 3. 폴라로이드 액자 내부 안착 GIF */
+.polaroid-photo-box {
+  position: relative !important;
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+.photo-inside-gif {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+  z-index: 10;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.photo-inside-gif.landed {
+  opacity: 1;
+}

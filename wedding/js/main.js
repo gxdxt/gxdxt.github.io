@@ -256,3 +256,19 @@ window.addEventListener("load", function() {
     updateDday();
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+  const walkingOutside = document.getElementById('walking-outside-gif');
+  const photoInside = document.getElementById('photo-inside-gif');
+
+  // 1. 애니메이션 시작
+  if (walkingOutside) {
+    walkingOutside.classList.add('start-walk');
+  }
+
+  // 2. 2.7초 뒤 액자 위치 도착 시점에 액자 안 GIF 켜기
+  setTimeout(() => {
+    if (photoInside) {
+      photoInside.classList.add('landed');
+    }
+  }, 2700);
+});

@@ -22,6 +22,12 @@
   <link rel="stylesheet" href="./css/animation.css">
 </head>
 <body>
+    <!-- 1. 진입 시 어두워지는 오버레이 배경 및 걸어오는 GIF -->
+<div id="intro-overlay" class="intro-overlay">
+  <!-- 걸어오는 GIF (실제 GIF 이미지 경로 입력) -->
+  <img src="YOUR_WALKING_GIF_URL.gif" alt="walking" id="walking-gif" class="walking-gif">
+</div>
+    <main class="wedding-card">
 <!-- BGM 오디오 객체 -->
 <audio id="bgmAudio" loop preload="metadata">
   <source src="./music/bgm.mp3" type="audio/mpeg">
@@ -61,9 +67,24 @@
     <section class="hero-section">
       <div class="hero-date">2027. O1. 23 SAT AM 11:20</div>
       <div class="hero-names">먼지 & 알지</div>
-      <div class="hero-image-wrap">
-        <img src="./images/opst2.png" alt="메인 웨딩 사진">
-      </div>
+<!-- 1. 화면 전체 오버레이 & 밖에서 걸어오는 GIF (액자 바깥에 위치) -->
+<div id="intro-overlay" class="intro-overlay">
+  <!-- 화면 왼쪽 바깥에서 액자로 걸어갈 GIF -->
+  <img src="./images/gif/walking.gif" alt="걸어오는 GIF" id="walking-outside-gif" class="walking-outside-gif">
+</div>
+
+<!-- 2. 폴라로이드 액자 영역 -->
+<div class="hero-image-wrap">
+  <div class="polaroid-photo-box">
+    <!-- 메인 배경 사진 -->
+    <img src="./images/opst2.png" alt="메인 웨딩 사진" class="main-photo">
+    <!-- 액자에 골인했을 때 짠하고 나타날 GIF -->
+    <!--   <img src="./images/gif/walking.gif" alt="액자 속 GIF" id="photo-inside-gif" class="photo-inside-gif"> -->
+  </div>
+  
+  <p class="polaroid-caption">Our Special Day · 2027</p>
+</div>
+
     </section>
 
     <!-- 모시는 글 -->
@@ -342,7 +363,7 @@
 
 
   </div>
-
+    </main>
   <!-- 토스트 팝업 레이어 -->
   <div id="toast">계좌번호가 복사되었습니다.</div>
 <!-- 분리된 자바스크립트 -->
