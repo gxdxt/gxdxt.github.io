@@ -4,21 +4,17 @@ console.log("🔥 main.js 파일 맨 윗줄 로드됨!");
    ========================================================================== */
 // Unsplash 기반 고화질 웨딩 목업 15장
 const galleryImages = [
-  "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1000&q=80",
-  "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1000&q=80",
-  "https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=1000&q=80",
-  "https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1000&q=80",
-  "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=1000&q=80",
-  "https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=1000&q=80",
-  "https://images.unsplash.com/photo-1519225424933-7e61a7a0b380?auto=format&fit=crop&w=1000&q=80",
-  "https://images.unsplash.com/photo-1532712938310-34cb3982ef74?auto=format&fit=crop&w=1000&q=80",
-  "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=1000&q=80",
-  "https://images.unsplash.com/photo-1544077960-604201fe74bc?auto=format&fit=crop&w=1000&q=80",
-  "https://images.unsplash.com/photo-1529636798458-92182e662485?auto=format&fit=crop&w=1000&q=80",
-  "https://images.unsplash.com/photo-1537633552985-df8429e8048b?auto=format&fit=crop&w=1000&q=80",
-  "https://images.unsplash.com/photo-1524824267900-2fa9cbf7a506?auto=format&fit=crop&w=1000&q=80",
-  "https://images.unsplash.com/photo-1469371670807-013ccf25f16a?auto=format&fit=crop&w=1000&q=80",
-  "https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?auto=format&fit=crop&w=1000&q=80"
+  "./images/DSC07167.JPG",
+ "./images/DSC07170.JPG",
+ "./images/DSC07185.JPG",
+"./images/DSC07189.JPG",
+"./images/DSC07225.JPG",
+"./images/DSC07312.JPG",
+"./images/DSC07397.JPG",
+"./images/DSC07316.JPG",
+"./images/DSC07397.JPG",
+  "./images/DSC07574.JPG",
+    "./images/DSC07575.JPG"
 ];
 
 let currentIndex = 0;

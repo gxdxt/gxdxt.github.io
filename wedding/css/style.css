@@ -4,9 +4,9 @@
    1. Design Variables & Global Reset
    ========================================================================== */
 :root {
-  --bg-color: #87B4F8;        /* 전체 배경 미색 */
+  --bg-color: #FFFFF0;        /* 전체 배경 미색 */
   --card-bg: #ffffff;         /* 모바일 카드 배경 흰색 */
-  --text-main: #2b2b2b;       /* 본문 메인 텍스트 */
+  --text-main: #f37021;       /* 본문 메인 텍스트 */
   --text-sub: #6f6b64;        /* 보조 안내 텍스트 */
   --point-color: #8c7355;     /* 따뜻한 골드브라운 포인트 */
   --point-light: #f5f0ea;     /* 연한 포인트 배경 */
@@ -97,8 +97,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  /*background-color: #eee8dc;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);*/
+  background-color: #eee8dc;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
 }
 
 .hero-image-wrap img {
@@ -324,6 +324,154 @@ body {
   visibility: visible;
   opacity: 1;
   bottom: 50px;
+}
+
+/* ==========================================
+   대표 프리뷰 (WebP / GIF) 컨테이너
+========================================== */
+.gallery-preview-wrap {
+  width: 100%;
+  max-width: 500px;         /* 모바일/PC 레이아웃에 맞춰 너비 조정 (예: 500~600px) */
+  margin: 0 auto 24px auto; /* 중앙 정렬 및 하단 그리드와의 간격 */
+  border-radius: 12px;      /* 부드러운 모서리 라운딩 */
+  overflow: hidden;         /* 라운딩 영역 밖 이미지 잘라내기 */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06); /* 은은한 입체감 */
+  background-color: #f7f7f7;
+}
+
+/* picture 및 이미지 반응형 처리 */
+.gallery-preview-wrap picture {
+  display: block;
+  width: 100%;
+}
+
+.gallery-preview-wrap img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;      /* 사진 비율에 맞춰 1/1, 4/3, 16/9 등으로 고정 가능 */
+  object-fit: cover;        /* 비율 유지하며 꽉 차게 */
+  transition: transform 0.3s ease;
+}
+
+/* 데스크톱 마우스 호버 시 미세한 줌 효과 */
+.gallery-preview-wrap:hover img {
+  transform: scale(1.02);
+}
+
+/* 가로 스크롤 카드 스냅 */
+/* CSS */
+.webp-scroll-container {
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 10px 16px 20px 16px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* 파이어폭스 스크롤바 숨김 */
+}
+
+.webp-scroll-container::-webkit-scrollbar {
+  display: none; /* 크롬, 사파리 스크롤바 숨김 */
+}
+
+.webp-card {
+  flex: 0 0 78%; /* 다음 카드가 살짝 보여 넘길 수 있음을 암시 */
+  max-width: 380px;
+  scroll-snap-align: center;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  position: relative;
+  background: #000;
+}
+
+.webp-card img {
+  width: 100%;
+  aspect-ratio: 4 / 5; /* 세로형 감성 비율 */
+  object-fit: cover;
+  display: block;
+}
+
+.card-caption {
+  position: absolute;
+  bottom: 12px;
+  left: 14px;
+  color: #fff;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+}
+
+/* 포토부스형 */
+/* CSS */
+.photobooth-strip {
+  width: 100%;
+  max-width: 320px; /* 얇은 필름 형태 유지 */
+  margin: 0 auto 32px auto;
+  padding: 14px;
+  background: #ffffff;
+  border: 1px solid #eee;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.strip-item img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  display: block;
+}
+/* ==========================================
+   2열 독사진 듀오 레이아웃
+========================================== */
+.duo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 정확히 반반(1:1) 배치 */
+  gap: 12px;                             /* 두 사진 사이 간격 */
+  width: 100%;
+  max-width: 500px;                      /* 갤러리/프리뷰 너비와 통일 */
+  margin: 0 auto 28px auto;              /* 중앙 정렬 및 하단 3열 그리드와의 간격 */
+}
+
+.duo-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;                   /* 부드러운 모서리 */
+  background-color: #f7f7f7;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* 은은한 그림자 */
+}
+
+.duo-item img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 4;                   /* 인물 독사진에 가장 어울리는 세로 비율 */
+  object-fit: cover;                     /* 비율 깨짐 방지 */
+  transition: transform 0.4s ease;
+}
+
+/* 마우스 올렸을 때 은은한 줌인 효과 */
+.duo-item:hover img {
+  transform: scale(1.03);
+}
+
+/* 사진 하단 미니 텍스트 라벨 (선택 사항) */
+.duo-tag {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 4px 10px;
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);            /* 유리 블러 효과 */
+  border-radius: 12px;
+  white-space: nowrap;
+  pointer-events: none;
 }
 
 /* ==========================================================================
