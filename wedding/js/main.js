@@ -213,6 +213,25 @@ document.addEventListener("DOMContentLoaded", function() {
   document.addEventListener("scroll", handleFirstInteraction, { passive: true });
 });
 
+/**
+ * 아코디언 드롭다운 토글 함수
+ */
+function toggleAccordion(button) {
+  const item = button.closest('.accordion-item');
+  const body = item.querySelector('.accordion-body');
+  const isOpen = item.classList.contains('active');
+
+  if (isOpen) {
+    // 닫기
+    body.style.maxHeight = null;
+    item.classList.remove('active');
+  } else {
+    // 열기
+    item.classList.add('active');
+    body.style.maxHeight = body.scrollHeight + "px";
+  }
+}
+
 // ==========================================================================
 // D-Day Counter (2027년 1월 23일 11:20 기준)
 // ==========================================================================
@@ -270,5 +289,38 @@ document.addEventListener('DOMContentLoaded', () => {
     if (photoInside) {
       photoInside.classList.add('landed');
     }
-  }, 2700);
+  }, 5000);
+});
+
+// 하객 이름 입력
+document.addEventListener("DOMContentLoaded", function() {
+    // 1. URL의 쿼리 파라미터 가져오기 (예: ?name=홍길동)
+    const urlParams = new URLSearchParams(window.location.search);
+    const guestName = urlParams.get('name');
+
+    // 2. 이름을 출력할 요소 선택
+    const guestNameElement = document.getElementById('guest-name');
+
+    // 3. 파라미터에 이름이 존재하면 해당 이름으로 변경
+    if (guestName && guestName.trim() !== "") {
+        // 디코딩 처리 및 XSS 방지를 위한 안전한 텍스트 삽입
+        guestNameElement.innerText = guestName; 
+    } else {
+        // 이름이 없을 경우 기본 문구 (예: '소중한 분' 또는 '고마운 분')
+        guestNameElement.innerText = "소중한 분";
+    }
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    // URL에서 name 파라미터 가져오기 (예: ?name=홍길동)
+    const urlParams = new URLSearchParams(window.location.search);
+    const guestName = urlParams.get('name');
+
+    const nameTarget = document.getElementById('guestNameTarget');
+
+    if (guestName && guestName.trim() !== "") {
+        nameTarget.innerText = guestName; // 전달받은 이름 출력 (예: 홍길동)
+    } else {
+        nameTarget.innerText = "소중한 분"; // 파라미터가 없을 때의 기본값
+    }
 });

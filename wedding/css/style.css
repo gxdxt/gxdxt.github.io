@@ -32,6 +32,17 @@ body {
   overflow-x: hidden; /* 가로 스크롤 방지 */
 }
 
+/* 이미지 길게 누를 때 뜨는 메뉴 및 드래그 방지 */
+img {
+  -webkit-touch-callout: none; /* iOS Safari에서 길게 눌러 메뉴 뜨는 것 방지 */
+  -webkit-user-select: none;   /* 사파리 텍스트/이미지 선택 방지 */
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: auto;        /* 터치나 클릭 이벤트는 유지하되 드래그/저장 방지 */
+}
+
 /* ==========================================================================
    2. Main Layout (Mobile Frame)
    ========================================================================== */
@@ -956,7 +967,8 @@ body {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.75);
+  /* 1. 아주 은은하고 밝은 반투명 흰색/아이보리 톤 (밝은 느낌 핵심!) */
+  background-color: rgba(255, 255, 255, 0.65);;
   z-index: 9998;
   pointer-events: none; /* 클릭/터치 방해 절대 없음 */
 
@@ -1043,4 +1055,20 @@ body {
 
 .photo-inside-gif.landed {
   opacity: 1;
+}
+
+/* Guest 내용 추가 */
+.guest-to-banner {
+  font-family: 'Noto Serif KR', serif; /* 명조체 느낌으로 고급스럽게 */
+  font-size: 1.1rem;
+  color: var(--text-main, #333);
+  margin-bottom: 12px;
+  opacity: 0.85; /* 원하시는 opacity 적용 */
+  letter-spacing: 1px;
+}
+
+.guest-name {
+  font-weight: 600;
+  border-bottom: 1px solid currentColor; /* 이름 아래 은은한 밑줄 효과 */
+  padding-bottom: 2px;
 }
