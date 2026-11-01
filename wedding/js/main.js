@@ -316,11 +316,14 @@ document.addEventListener("DOMContentLoaded", function() {
     const urlParams = new URLSearchParams(window.location.search);
     const guestName = urlParams.get('name');
 
-    const nameTarget = document.getElementById('guestNameTarget');
+    // 클래스가 .guest-name인 모든 요소들을 가져옴 (여러 개 존재 가능)
+    const nameTargets = document.querySelectorAll('.guest-name');
 
-    if (guestName && guestName.trim() !== "") {
-        nameTarget.innerText = guestName; // 전달받은 이름 출력 (예: 홍길동)
-    } else {
-        nameTarget.innerText = "소중한 분"; // 파라미터가 없을 때의 기본값
-    }
+    // 변경할 텍스트 결정 (파라미터가 있으면 값 사용, 없으면 기본값)
+    const displayName = (guestName && guestName.trim() !== "") ? guestName : "소중한 분";
+
+    // 가져온 모든 태그에 반복문으로 텍스트 적용
+    nameTargets.forEach(el => {
+        el.innerText = displayName;
+    });
 });

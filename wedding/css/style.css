@@ -959,21 +959,25 @@ img {
 /* ==========================================
    검은 배경 무조건 사라지게 만드는 완전 통합 CSS
 ========================================== */
-
-/* 1. 어두운 배경 오버레이 (CSS 애니메이션으로 자동 페이드아웃) */
+/* 1. 어두운/밝은 배경 오버레이 (화면 전체 정중앙 정렬 추가) */
 .intro-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  /* 1. 아주 은은하고 밝은 반투명 흰색/아이보리 톤 (밝은 느낌 핵심!) */
-  background-color: rgba(255, 255, 255, 0.65);;
+  background-color: rgba(255, 255, 255, 0.95); /* 은은하고 밝은 아이보리/화이트 톤 */
   z-index: 9998;
-  pointer-events: none; /* 클릭/터치 방해 절대 없음 */
+  pointer-events: none; /* 클릭/터치 방해 방지 */
+  
+  /* 정중앙 정렬을 위한 Flexbox 추가 */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
-  /* 3.0초까지 어두웠다가 3.0초~3.8초 사이에 사라지고 화면에서 꺼짐 */
-  animation: fadeOutOverlay 3.8s forwards;
+  /* 5초 동안 페이드아웃 애니메이션 */
+  animation: fadeOutOverlay 5s forwards;
 }
 
 @keyframes fadeOutOverlay {
@@ -1007,7 +1011,7 @@ img {
 }
 
 .walking-outside-gif.start-walk {
-  animation: walkFromOutside 3.0s linear forwards;
+  animation: walkFromOutside 5s linear forwards;
 }
 
 @keyframes walkFromOutside {
@@ -1057,18 +1061,70 @@ img {
   opacity: 1;
 }
 
-/* Guest 내용 추가 */
+/* 4. 게스트 및 초대장 문구 컨테이너 (정리 및 통합) */
 .guest-to-banner {
-  font-family: 'Noto Serif KR', serif; /* 명조체 느낌으로 고급스럽게 */
+  text-align: center;
+  font-family: 'Noto Serif KR', serif; /* 고급스러운 명조체 */
   font-size: 1.1rem;
-  color: var(--text-main, #333);
-  margin-bottom: 12px;
-  opacity: 0.85; /* 원하시는 opacity 적용 */
+  color: var(--text-main, #333); /* 밝은 배경에 어울리는 어두운 텍스트 색상 */
+  margin-top: 20px; /* GIF 아래 적당한 간격 확보 */
+  opacity: 0.9;
   letter-spacing: 1px;
+  padding: 0 20px;
+}
+
+.to-label {
+  font-size: 1.1rem;
+  font-weight: 500;
 }
 
 .guest-name {
-  font-weight: 600;
+  font-size: 1.2rem;
+  font-weight: 700;
   border-bottom: 1px solid currentColor; /* 이름 아래 은은한 밑줄 효과 */
   padding-bottom: 2px;
+  margin-left: 4px;
+}
+
+.invite-message {
+  margin-top: 10px;
+  font-size: 1rem;
+  letter-spacing: -0.5px;
+  opacity: 0.95;
+}
+
+/* 5. 이미지 4개 일렬 배치 컨테이너 */
+.wiggling-images-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px; /* 이미지 간격 */
+  margin-top: 20px;
+}
+
+/* 흔들거리는 이미지 스타일 */
+.wiggling-img {
+  width: 36px;  /* 아이콘 크기 */
+  height: 36px;
+  object-fit: contain;
+  animation: jiggle 1.8s ease-in-out infinite;
+}
+
+/* 개별 이미지에 약간씩 시간차를 주어 자연스럽게 연출 */
+.wiggling-images-container img:nth-child(1) { animation-delay: 0s; }
+.wiggling-images-container img:nth-child(2) { animation-delay: 0.3s; }
+.wiggling-images-container img:nth-child(3) { animation-delay: 0.6s; }
+.wiggling-images-container img:nth-child(4) { animation-delay: 0.9s; }
+
+/* 흔들림 키프레임 애니메이션 */
+@keyframes jiggle {
+  0%, 100% {
+    transform: rotate(0deg) translateY(0);
+  }
+  25% {
+    transform: rotate(-5deg) translateY(-3px);
+  }
+  75% {
+    transform: rotate(5deg) translateY(0px);
+  }
 }
